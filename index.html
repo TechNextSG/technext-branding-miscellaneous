@@ -216,12 +216,64 @@
     .bg-btn-inverted:hover { background: #e2e9f2; }
     @media (max-width: 560px) {
       .bg-grid { grid-template-columns: 1fr; }
+    }
+    /* Profile Photo section */
+    .profile-lead { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .profile-circle {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #f4f6f9;
+      border: 3px solid #eef2f7;
+      display: block;
+    }
+    .profile-reqs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+    }
+    .profile-reqs .req { font-size: 12.5px; color: #444; line-height: 1.5; display: flex; gap: 8px; }
+    .profile-reqs .req .ic { flex-shrink: 0; font-weight: 700; }
+    .req.good .ic { color: #16a34a; }
+    .req.bad .ic { color: #dc2626; }
+    .wa-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap;
+      background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .wa-cta-text { font-size: 13px; color: #166534; line-height: 1.5; }
+    .wa-cta-text b { color: #14532d; }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #25D366; color: #fff; text-decoration: none;
+      font-size: 13px; font-weight: 700;
+      padding: 11px 20px; border-radius: 8px; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .wa-btn:hover { background: #1da851; }
+    .wa-btn svg { width: 18px; height: 18px; fill: #fff; }
+    @media (max-width: 560px) {
+      .profile-grid { grid-template-columns: repeat(2, 1fr); }
+      .profile-reqs { grid-template-columns: 1fr; }
     }  </style>
 </head>
 <body>
 
 <div class="page-title">TechNext Branding Miscellaneous <span>TechNext Pte Ltd.</span></div>
-<div class="page-intro">Grab your branded assets in one place &mdash; email signature, animated logo, and video-call backgrounds. Each section has a <b>Tutorial</b> button with step-by-step instructions.</div>
+<div class="page-intro">Grab your branded assets in one place &mdash; email signature, profile photo, animated logo, and video-call backgrounds. Each section has a <b>Tutorial</b> button with step-by-step instructions.</div>
 
 <!-- Editable Signature Card -->
 <div class="sig-card">
@@ -354,6 +406,53 @@
       <li>Crop or reposition the image, then click <b>Save as profile picture</b>.</li>
     </ol>
     <div class="tut-note">&#128161; Profile pictures display as a still image &mdash; animated GIFs won't move. It can take a few minutes to update everywhere.</div>
+  </div>
+</div>
+
+<!-- Profile Photo Card -->
+<div class="sig-card">
+  <div class="sig-card-header">
+    <div>
+      <div class="sig-card-name">Profile Photo <span class="sig-card-badge">Branded</span></div>
+      <div class="sig-card-role">Your official TechNext headshot with the branded circle frame</div>
+    </div>
+    <div class="sig-card-actions">
+      <button class="tut-toggle" id="tog-profile" onclick="toggleTut('tut-profile','tog-profile')">Tutorial</button>
+    </div>
+  </div>
+  <div class="sig-card-body">
+    <div class="profile-lead">Here's how your finished profile photo will look. Provide a <b>high-quality, well-posed photo</b> and our Marketing Lead will edit it into this branded TechNext circle frame for you.</div>
+    <div class="profile-grid">
+      <img class="profile-circle" src="profiles/sample-1.png" alt="TechNext profile photo sample 1">
+      <img class="profile-circle" src="profiles/sample-2.png" alt="TechNext profile photo sample 2">
+      <img class="profile-circle" src="profiles/sample-3.png" alt="TechNext profile photo sample 3">
+      <img class="profile-circle" src="profiles/sample-4.png" alt="TechNext profile photo sample 4">
+    </div>
+    <div class="profile-reqs">
+      <div class="req good"><span class="ic">&#10003;</span><span><b>Sharp &amp; high-resolution</b> &mdash; clear and well-lit, not blurry or pixelated</span></div>
+      <div class="req good"><span class="ic">&#10003;</span><span><b>Best posing</b> &mdash; face the camera, natural smile, confident posture</span></div>
+      <div class="req good"><span class="ic">&#10003;</span><span><b>Business attire</b> &mdash; smart, professional clothing</span></div>
+      <div class="req good"><span class="ic">&#10003;</span><span><b>Plain background</b> &mdash; a clean, uncluttered wall works best</span></div>
+      <div class="req bad"><span class="ic">&#10007;</span><span>No group photos, filters, or heavy shadows</span></div>
+      <div class="req bad"><span class="ic">&#10007;</span><span>No low-light selfies, screenshots, or already-cropped images</span></div>
+    </div>
+    <div class="wa-cta">
+      <div class="wa-cta-text">Got your best shot? <b>Send it to our Marketing Lead on WhatsApp</b> (0920 247 8918) for professional editing.</div>
+      <a class="wa-btn" href="https://wa.me/639202478918?text=Hi%21%20I%27d%20like%20my%20TechNext%20branded%20profile%20photo.%20Here%27s%20my%20photo%3A" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.004 0h-.008C7.174 0 .002 7.174.002 16c0 3.5 1.13 6.744 3.05 9.38L1.05 31.32l6.14-1.963A15.9 15.9 0 0016.004 32C24.83 32 32 24.826 32 16S24.83 0 16.004 0zm9.31 22.594c-.386 1.09-1.918 1.994-3.14 2.258-.836.178-1.928.32-5.604-1.204-4.7-1.948-7.726-6.724-7.96-7.034-.226-.31-1.9-2.53-1.9-4.826 0-2.296 1.166-3.426 1.636-3.906.386-.396.844-.576 1.126-.576.14 0 .27.007.386.013.33.014.496.034.714.556.272.65.93 2.246 1.008 2.41.08.164.134.356.026.566-.1.216-.15.35-.3.538-.15.188-.316.42-.452.564-.15.164-.306.342-.132.64.174.29.774 1.276 1.66 2.066 1.144 1.02 2.108 1.336 2.44 1.484.246.11.54.086.74-.12.254-.264.566-.702.884-1.134.226-.31.51-.348.808-.236.304.106 1.93.91 2.26 1.074.33.164.55.246.63.384.08.14.08.804-.306 1.894z"/></svg>
+        Send Photo on WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="tut-panel" id="tut-profile">
+    <div class="tut-panel-head">How to get your branded profile photo</div>
+    <ol class="tut-steps">
+      <li>Take or choose a <b>high-quality, well-posed</b> photo that follows the checklist above.</li>
+      <li>Click <b>Send Photo on WhatsApp</b> and attach your photo in the chat with our Marketing Lead.</li>
+      <li>The Marketing Lead edits it into the branded TechNext circle frame and sends it back to you.</li>
+      <li>Set it as your <b>Google / Gmail profile picture</b> (see the Email Signature tutorial) and use it on your other work profiles.</li>
+    </ol>
+    <div class="tut-note">&#128161; Tip: natural daylight facing a window gives the cleanest, most professional result.</div>
   </div>
 </div>
 
