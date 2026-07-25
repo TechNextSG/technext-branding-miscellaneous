@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TechNext Email Signatures</title>
+  <title>TechNext Branding Miscellaneous</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -27,6 +27,36 @@
       font-weight: 400;
       color: #888;
       margin-left: 10px;
+    }
+    .page-intro {
+      width: 100%;
+      max-width: 620px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin-top: -8px;
+    }
+    .sig-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .tut-toggle {
+      background: #fff;
+      color: #0062CC;
+      border: 1px solid #bfdbfe;
+      padding: 8px 16px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .tut-toggle:hover { background: #eff6ff; }
+    .tut-toggle.open { background: #0062CC; color: #fff; border-color: #0062CC; }
+    .tut-panel { display: none; border-top: 1px solid #f0f0f0; background: #fcfcfd; }
+    .tut-panel.open { display: block; }
+    .tut-panel-head {
+      font-size: 12px; font-weight: 700; color: #0062CC;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      padding: 14px 24px 2px 24px;
     }
     .sig-card {
       background: #fff;
@@ -141,20 +171,69 @@
       padding: 12px 24px;
       background: #fff8e6;
       line-height: 1.5;
+    }
+    /* Video Call Background grid */
+    .bg-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .bg-item {
+      border: 1px solid #ececec;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .bg-thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #f4f6f9;
+    }
+    .bg-item-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 12px;
+    }
+    .bg-item-label { font-size: 12px; font-weight: 700; color: #333; }
+    .bg-actions { display: flex; gap: 6px; }
+    .bg-btn {
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .bg-btn-normal { background: #0062CC; color: #fff; }
+    .bg-btn-normal:hover { background: #004fa3; }
+    .bg-btn-inverted { background: #eef2f7; color: #0062CC; border: 1px solid #d5dee8; }
+    .bg-btn-inverted:hover { background: #e2e9f2; }
+    @media (max-width: 560px) {
+      .bg-grid { grid-template-columns: 1fr; }
     }  </style>
 </head>
 <body>
 
-<div class="page-title">Email Signatures <span>TechNext Pte Ltd.</span></div>
+<div class="page-title">TechNext Branding Miscellaneous <span>TechNext Pte Ltd.</span></div>
+<div class="page-intro">Grab your branded assets in one place &mdash; email signature, animated logo, and video-call backgrounds. Each section has a <b>Tutorial</b> button with step-by-step instructions.</div>
 
 <!-- Editable Signature Card -->
 <div class="sig-card">
   <div class="sig-card-header">
     <div>
-      <div class="sig-card-name">Create Your Signature <span class="sig-card-badge">New</span></div>
+      <div class="sig-card-name">Email Signature <span class="sig-card-badge">New</span></div>
       <div class="sig-card-role">Fill in your details to preview and copy</div>
     </div>
-    <button class="copy-btn" id="btn-custom" onclick="copySignature('sig-template', 'btn-custom')">Copy Signature</button>
+    <div class="sig-card-actions">
+      <button class="tut-toggle" id="tog-signature" onclick="toggleTut('tut-signature','tog-signature')">Tutorial</button>
+      <button class="copy-btn" id="btn-custom" onclick="copySignature('sig-template', 'btn-custom')">Copy Signature</button>
+    </div>
   </div>
   <div class="sig-form">
     <div class="sig-form-row">
@@ -253,6 +332,29 @@
   </table>
   </div>
   </div>
+  <div class="tut-panel" id="tut-signature">
+    <div class="tut-panel-head">Add your signature in Gmail</div>
+    <ol class="tut-steps">
+      <li>Click <b>Copy Signature</b> at the top of this card.</li>
+      <li>Open <b>Gmail</b>, then click the <b>&#9881; gear icon</b> at the top right and choose <b>See all settings</b>.</li>
+      <li>In the <b>General</b> tab, scroll down to the <b>Signature</b> section.</li>
+      <li>Click <b>+ Create new</b>, type a name (e.g. <b>TechNext</b>), then click <b>Create</b>.</li>
+      <li>Click inside the signature box and paste with <kbd>Ctrl</kbd> + <kbd>V</kbd> (<kbd>&#8984; Cmd</kbd> + <kbd>V</kbd> on Mac).</li>
+      <li>Under <b>Signature defaults</b>, select your new signature for <b>For new emails</b> and <b>On reply/forward</b>.</li>
+      <li>Scroll to the very bottom and click <b>Save Changes</b>.</li>
+    </ol>
+    <div class="tut-note">&#128161; The logo and icons load from the web automatically &mdash; just paste, don't re-upload any images.</div>
+    <div class="tut-panel-head">Change your profile picture</div>
+    <div class="tut-note" style="color:#8a6d00;background:#fff8e6;">&#9432; This changes your <b>Google / Gmail account photo</b> only &mdash; the picture people see when you email from your @technext.asia Google account. It does not affect other apps or platforms.</div>
+    <ol class="tut-steps">
+      <li>Open <b>Gmail</b> and click your <b>profile photo</b> in the top-right circle.</li>
+      <li>Click the <b>camera icon</b> on your photo, or click <b>Manage your Google Account</b>.</li>
+      <li>Go to the <b>Personal info</b> tab, then click your <b>photo</b> under "Profile picture".</li>
+      <li>Click <b>Add profile picture</b> (or <b>Change</b>) and upload your image from your computer.</li>
+      <li>Crop or reposition the image, then click <b>Save as profile picture</b>.</li>
+    </ol>
+    <div class="tut-note">&#128161; Profile pictures display as a still image &mdash; animated GIFs won't move. It can take a few minutes to update everywhere.</div>
+  </div>
 </div>
 
 <!-- Animated Logo Card -->
@@ -262,56 +364,121 @@
       <div class="sig-card-name">Animated Logo <span class="sig-card-badge">GIF</span></div>
       <div class="sig-card-role">TechNext animated logo for emails &amp; presentations</div>
     </div>
-    <button class="copy-btn" id="btn-gif" onclick="downloadGif()">Download GIF</button>
+    <div class="sig-card-actions">
+      <button class="tut-toggle" id="tog-gif" onclick="toggleTut('tut-gif','tog-gif')">Tutorial</button>
+      <button class="copy-btn" id="btn-gif" onclick="downloadGif()">Download GIF</button>
+    </div>
   </div>
   <div class="sig-card-body" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
     <img src="sig/logo-animation.gif" alt="TechNext animated logo" width="200" height="200" style="border:1px solid #eee;border-radius:12px;background:#fff;display:block;">
     <div style="font-size:11px;color:#999;">800 &times; 800 px &middot; GIF</div>
   </div>
+  <div class="tut-panel" id="tut-gif">
+    <div class="tut-panel-head">Use it in a presentation (PowerPoint / Google Slides)</div>
+    <ol class="tut-steps">
+      <li>Click <b>Download GIF</b> above to save the file to your computer.</li>
+      <li>In your slide, go to <b>Insert &rarr; Image</b> (or <b>Insert &rarr; Picture</b>) and select the downloaded GIF.</li>
+      <li>Resize and position it &mdash; it animates automatically in <b>Slide Show / Present</b> mode.</li>
+    </ol>
+    <div class="tut-panel-head">Use it in an email</div>
+    <ol class="tut-steps">
+      <li>In Gmail, click the <b>Insert photo</b> icon in the compose toolbar and upload the GIF (choose <b>Inline</b>).</li>
+      <li>Send yourself a test email first to confirm the animation plays.</li>
+    </ol>
+    <div class="tut-note">&#128161; The animation plays in most email clients and slide software. A few older email apps may show only the first frame &mdash; that's normal.</div>
+  </div>
 </div>
 
-<!-- Tutorial: Gmail Signature -->
+<!-- Video Call Background Card -->
 <div class="sig-card">
   <div class="sig-card-header">
     <div>
-      <div class="sig-card-name">How to Add Your Signature in Gmail <span class="sig-card-badge">Guide</span></div>
-      <div class="sig-card-role">Takes about 1 minute</div>
+      <div class="sig-card-name">Video Call Background <span class="sig-card-badge">HD</span></div>
+      <div class="sig-card-role">Branded backgrounds for Zoom, Teams &amp; Google Meet &middot; 1920 &times; 1080</div>
+    </div>
+    <div class="sig-card-actions">
+      <button class="tut-toggle" id="tog-bg" onclick="toggleTut('tut-bg','tog-bg')">Tutorial</button>
     </div>
   </div>
-  <ol class="tut-steps">
-    <li>Click <b>Copy Signature</b> on your signature card above.</li>
-    <li>Open <b>Gmail</b>, then click the <b>&#9881; gear icon</b> at the top right and choose <b>See all settings</b>.</li>
-    <li>In the <b>General</b> tab, scroll down to the <b>Signature</b> section.</li>
-    <li>Click <b>+ Create new</b>, type a name (e.g. <b>TechNext</b>), then click <b>Create</b>.</li>
-    <li>Click inside the signature box and paste with <kbd>Ctrl</kbd> + <kbd>V</kbd> (<kbd>&#8984; Cmd</kbd> + <kbd>V</kbd> on Mac).</li>
-    <li>Under <b>Signature defaults</b>, select your new signature for <b>For new emails</b> and <b>On reply/forward</b>.</li>
-    <li>Scroll to the very bottom and click <b>Save Changes</b>.</li>
-  </ol>
-  <div class="tut-note">&#128161; The logo and icons load from the web automatically &mdash; just paste, don't re-upload any images.</div>
-</div>
-
-<!-- Tutorial: Profile Picture -->
-<div class="sig-card">
-  <div class="sig-card-header">
-    <div>
-      <div class="sig-card-name">How to Change Your Profile Picture <span class="sig-card-badge">Guide</span></div>
-      <div class="sig-card-role">Your photo shows on every email you send</div>
+  <div class="sig-card-body">
+    <div class="bg-grid">
+      <div class="bg-item">
+        <img class="bg-thumb" src="backgrounds/bg-1-normal.png" alt="Light background — organic waves">
+        <div class="bg-item-foot">
+          <span class="bg-item-label">Light 1</span>
+          <div class="bg-actions">
+            <a class="bg-btn bg-btn-normal" href="backgrounds/bg-1-normal.png" download="TechNext-VideoCall-Light-1-Normal.png">Normal</a>
+            <a class="bg-btn bg-btn-inverted" href="backgrounds/bg-1-inverted.png" download="TechNext-VideoCall-Light-1-Inverted.png">Inverted</a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-item">
+        <img class="bg-thumb" src="backgrounds/bg-2-normal.png" alt="Light background — diagonal ribbons">
+        <div class="bg-item-foot">
+          <span class="bg-item-label">Light 2</span>
+          <div class="bg-actions">
+            <a class="bg-btn bg-btn-normal" href="backgrounds/bg-2-normal.png" download="TechNext-VideoCall-Light-2-Normal.png">Normal</a>
+            <a class="bg-btn bg-btn-inverted" href="backgrounds/bg-2-inverted.png" download="TechNext-VideoCall-Light-2-Inverted.png">Inverted</a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-item">
+        <img class="bg-thumb" src="backgrounds/bg-3-normal.png" alt="Dark blue background — gradient waves">
+        <div class="bg-item-foot">
+          <span class="bg-item-label">Dark 1</span>
+          <div class="bg-actions">
+            <a class="bg-btn bg-btn-normal" href="backgrounds/bg-3-normal.png" download="TechNext-VideoCall-Dark-1-Normal.png">Normal</a>
+            <a class="bg-btn bg-btn-inverted" href="backgrounds/bg-3-inverted.png" download="TechNext-VideoCall-Dark-1-Inverted.png">Inverted</a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-item">
+        <img class="bg-thumb" src="backgrounds/bg-4-normal.png" alt="Dark blue background — line-art waves">
+        <div class="bg-item-foot">
+          <span class="bg-item-label">Dark 2</span>
+          <div class="bg-actions">
+            <a class="bg-btn bg-btn-normal" href="backgrounds/bg-4-normal.png" download="TechNext-VideoCall-Dark-2-Normal.png">Normal</a>
+            <a class="bg-btn bg-btn-inverted" href="backgrounds/bg-4-inverted.png" download="TechNext-VideoCall-Dark-2-Inverted.png">Inverted</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <ol class="tut-steps">
-    <li>Open <b>Gmail</b> and click your <b>profile photo</b> in the top-right circle.</li>
-    <li>Click the <b>camera icon</b> on your photo, or click <b>Manage your Google Account</b>.</li>
-    <li>Go to the <b>Personal info</b> tab, then click your <b>photo</b> under "Profile picture".</li>
-    <li>Click <b>Add profile picture</b> (or <b>Change</b>) and upload your image from your computer.</li>
-    <li>Crop or reposition the image, then click <b>Save as profile picture</b>.</li>
-  </ol>
-  <div class="tut-note">&#128161; Profile pictures display as a still image &mdash; animated GIFs won't move. It can take a few minutes to update everywhere.</div>
+  <div class="tut-note">&#128161; <b>Normal</b> reads correctly to other participants. <b>Inverted</b> is horizontally mirrored &mdash; choose it if your video app flips your background in your own self-view.</div>
+  <div class="tut-panel" id="tut-bg">
+    <div class="tut-panel-head">Zoom</div>
+    <ol class="tut-steps">
+      <li>Download a background above (<b>Normal</b> or <b>Inverted</b>).</li>
+      <li>Open <b>Settings</b> (&#9881;) &rarr; <b>Background &amp; Effects</b>.</li>
+      <li>Under <b>Virtual Backgrounds</b>, click <b>+</b> then <b>Add Image</b> and select the downloaded file.</li>
+    </ol>
+    <div class="tut-panel-head">Microsoft Teams</div>
+    <ol class="tut-steps">
+      <li>Before or during a call, click <b>More</b> (&hellip;) &rarr; <b>Video effects and settings</b> / <b>Background effects</b>.</li>
+      <li>Click <b>Add new</b> and upload the downloaded background, then select it and click <b>Apply</b>.</li>
+    </ol>
+    <div class="tut-panel-head">Google Meet</div>
+    <ol class="tut-steps">
+      <li>In the meeting preview or during a call, click <b>Apply visual effects</b> (the sparkle icon).</li>
+      <li>Under <b>Backgrounds</b>, click <b>Add</b> (the <b>+</b> tile) and upload the downloaded background.</li>
+    </ol>
+    <div class="tut-note">&#128161; Not sure which to pick? Start with <b>Normal</b>. If the TechNext logo looks mirrored to you in your own preview, that's just your self-view &mdash; others still see it correctly.</div>
+  </div>
 </div>
 
 <script>
+  function toggleTut(panelId, btnId) {
+    const panel = document.getElementById(panelId);
+    const btn = document.getElementById(btnId);
+    const open = panel.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.textContent = open ? 'Hide Tutorial' : 'Tutorial';
+    if (open) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
   // Local sig/ images are for on-page preview only. Copied signatures must
   // reference this hosted base, or images break in recipients' inboxes.
-  const HOSTED_BASE = 'https://technextsg.github.io/email-signature/sig/';
+  const HOSTED_BASE = 'https://technextsg.github.io/technext-branding-miscellaneous/sig/';
 
   function hostedClone(sigId) {
     const clone = document.getElementById(sigId).cloneNode(true);
