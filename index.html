@@ -293,7 +293,7 @@
       <div class="sig-form-field"><label for="f-role">Job Title</label><input type="text" id="f-role" placeholder="e.g. Sales Executive" oninput="updateSigTemplate()"></div>
     </div>
     <div class="sig-form-row">
-      <div class="sig-form-field"><label for="f-phone">Phone</label><input type="text" id="f-phone" placeholder="+63 000 000 0000" oninput="updateSigTemplate()"></div>
+      <div class="sig-form-field"><label for="f-phone">Phone / WhatsApp</label><input type="text" id="f-phone" placeholder="+63 000 000 0000" oninput="updateSigTemplate()"></div>
       <div class="sig-form-field"><label for="f-email">Email</label><input type="email" id="f-email" placeholder="name@technext.asia" oninput="updateSigTemplate()"></div>
     </div>
   </div>
@@ -320,7 +320,7 @@
         <tr>
           <td style="padding-right:10px;padding-bottom:2px;vertical-align:middle;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIqSURBVEhL7ZUxaNtAFIb/J9lYBxkyZOjQoUOHFFpISseWBuyOhRQ6pGO2rl7MycKIg4DtyUOXdgtkyNgWDFlsunhPhwweOnTI4CFDhmKpYOl1sBROZ6e2FY/5QEj//574udPdCbhnzZAufN8vOI5zAODxTQNRGEVR1/O8C703L5YuhBD7RHRCRH56AWhalnWm992FTCAzb+g6hYgedjqdTdPPQyYQwKWhbwjDcP2BcRyPdK1jWdaO6eUhE1gsFq90bfDaNPKQCazVaiMAP3Vv3ZjfEMz8fY43mkwmX0w/DzOBtm1/M6whM7/yPG9o+LnIbPyUVqt1DmCHma9s236WTPVamBkhpvtOJfetKIq2zfpdmDtCTEf5A8AegGEQBLtKqdDsycPcEWK6UFTyuC2E+GSUc2ObRkq/3/9dLpeJiPYAPK9UKn97vd7A7FuVW6c0pdlsnhLRQSKPgiBQSqmJ3uP7fqFUKn0kopCILkql0rBarV7rPSkLA33f33Ac54yIXmI61QMi+iClvEzqBcdxTonovf4eM48ADOI4buhbamEgklAhxAmA/cS6JqLD8XjcnRemw8wN13WPUn3rotFRSv2RUr4DkL64ycxfhRDn/wtLKOhiqcAUKWUjjuO32nn71GhZyEqBAFCv17tSyl1mPgTwy6wvYuXAFNd1j4MgeMLMbwB8Zua5P28iyhwYSy2aZWm32y+iKNoiogcAHhFRaFnW8TrP4ntm+Ad/cbYlb8jwrwAAAABJRU5ErkJggg==" width="14" height="14" alt="" style="display:block;border:0;"></td>
           <td style="font-size:12px;color:#444444;font-family:Arial,sans-serif;padding-bottom:2px;vertical-align:middle;">
-            <a href="tel:+630000000000" id="t-phone-link" style="color:#444444;text-decoration:none;"><span id="t-phone">+63 000 000 0000</span></a>
+            <a href="https://wa.me/630000000000" id="t-phone-link" target="_blank" rel="noopener" style="color:#444444;text-decoration:none;"><span id="t-phone">+63 000 000 0000</span></a>
           </td>
         </tr>
         <tr>
@@ -635,8 +635,16 @@
     if (el('t-role'))       el('t-role').textContent     = role;
     if (el('t-phone'))      el('t-phone').textContent    = phone  || '+63 000 000 0000';
     if (el('t-email'))      el('t-email').textContent    = email  || 'email@technext.asia';
-    if (el('t-phone-link')) el('t-phone-link').href      = 'tel:' + (phone || '+630000000000').replace(/[^0-9+]/g, '');
+    if (el('t-phone-link')) el('t-phone-link').href      = 'https://wa.me/' + toWaNumber(phone || '+630000000000');
     if (el('t-email-link')) el('t-email-link').href      = 'mailto:' + (email || 'email@technext.asia');
+  }
+
+  // Normalize a phone number into a WhatsApp wa.me number (digits only, international).
+  function toWaNumber(phone) {
+    let d = (phone || '').replace(/[^0-9]/g, '');
+    if (d.startsWith('00')) d = d.slice(2);                 // 00xx intl prefix -> xx
+    else if (d.length === 11 && d.startsWith('0')) d = '63' + d.slice(1); // local PH mobile -> +63
+    return d;
   }
 
   function downloadGif() {
