@@ -36,7 +36,7 @@
       line-height: 1.6;
       margin-top: -8px;
     }
-    .sig-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .sig-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
     .tut-toggle {
       background: #fff;
       color: #0062CC;
@@ -97,6 +97,13 @@
     }
     .copy-btn:hover { background: #004fa3; }
     .copy-btn.copied { background: #16a34a; }
+    .copy-btn.secondary {
+      background: #fff;
+      color: #0062CC;
+      border: 1px solid #bfdbfe;
+    }
+    .copy-btn.secondary:hover { background: #eff6ff; }
+    .copy-btn.secondary.copied { background: #16a34a; color: #fff; border-color: #16a34a; }
     .sig-card-body {
       padding: 24px 24px;
     }
@@ -284,7 +291,9 @@
     </div>
     <div class="sig-card-actions">
       <button class="tut-toggle" id="tog-signature" onclick="toggleTut('tut-signature','tog-signature')">Tutorial</button>
-      <button class="copy-btn" id="btn-custom" onclick="copySignature('sig-template', 'btn-custom')">Copy Signature</button>
+      <button class="copy-btn secondary" id="btn-export" onclick="exportSignature('btn-export')">Export HTML</button>
+      <button class="copy-btn secondary" id="btn-odoo" onclick="copyOdooSignature('btn-odoo')">Copy for Odoo</button>
+      <button class="copy-btn" id="btn-custom" onclick="copySignature('sig-template', 'btn-custom')">Copy for Gmail</button>
     </div>
   </div>
   <div class="sig-form">
@@ -341,7 +350,7 @@
       <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:7px;">
         <tr>
           <td style="padding-right:10px;vertical-align:middle;">
-            <a href="https://technext.asia" style="font-size:12px;font-weight:700;color:#0062CC;text-decoration:none;font-family:Arial,sans-serif;">Odoo ERP Solution and AI Automation</a>
+            <a href="https://technext.asia" style="font-size:12px;font-weight:700;color:#3167CA;text-decoration:none;font-family:Arial,sans-serif;">Odoo ERP Solution and AI Automation</a>
           </td>
         </tr>
       </table>
@@ -378,7 +387,7 @@
   <table cellpadding="0" cellspacing="0" border="0" width="520" style="margin-top:10px;">
     <tr>
       <td>
-        <div style="font-size:10px;color:#999999;font-family:Arial,sans-serif;line-height:1.6;margin:0;">The content of this email is confidential and intended for the recipient specified in message only. It is strictly forbidden to share any part of this message with any third party, without a written consent of the sender. If you received this message by mistake, please reply to this message and follow with its deletion, so that we can ensure such a mistake does not occur in the future.</div>
+        <div style="font-size:10px;color:#999999;font-family:Arial,sans-serif;line-height:1.6;margin:0;">This email is confidential and meant only for the person it&rsquo;s addressed to. If you received it by mistake, please let the sender know and delete it. Sharing, copying or using it without permission is not allowed and may be unlawful.</div>
       </td>
     </tr>
   </table>
@@ -396,6 +405,17 @@
       <li>Scroll to the very bottom and click <b>Save Changes</b>.</li>
     </ol>
     <div class="tut-note">&#128161; The logo and icons load from the web automatically &mdash; just paste, don't re-upload any images.</div>
+    <div class="tut-panel-head">Add your signature in Odoo</div>
+    <ol class="tut-steps">
+      <li>Click <b>Copy for Odoo</b> at the top of this card.</li>
+      <li>In Odoo, add <b>?debug=1</b> to the end of the address in your browser and press <kbd>Enter</kbd>. This turns on developer mode.</li>
+      <li>Click your <b>avatar</b> in the top right and open your <b>preferences</b>.</li>
+      <li>Click inside the <b>Signature</b> box, then <b>double-click any word</b> so the formatting toolbar pops up.</li>
+      <li>Click the <b>&lt;/&gt;</b> icon at the right-hand end of that toolbar. The box switches to plain HTML.</li>
+      <li>Press <kbd>Ctrl</kbd> + <kbd>A</kbd>, then <kbd>Delete</kbd>, then paste with <kbd>Ctrl</kbd> + <kbd>V</kbd>.</li>
+      <li>Click <b>Save</b>, then send a message from any CRM lead to an outside address to check it.</li>
+    </ol>
+    <div class="tut-note">&#128161; Always paste into the <b>&lt;/&gt;</b> code view. Pasting into the normal box strips the formatting and blows the logo up to full size.</div>
     <div class="tut-panel-head">Change your profile picture</div>
     <div class="tut-note" style="color:#8a6d00;background:#fff8e6;">&#9432; This changes your <b>Google / Gmail account photo</b> only &mdash; the picture people see when you email from your @technext.asia Google account. It does not affect other apps or platforms.</div>
     <ol class="tut-steps">
@@ -618,9 +638,132 @@
     btn.textContent = ok ? 'Copied!' : 'Copy failed';
     btn.classList.add('copied');
     setTimeout(() => {
-      btn.textContent = 'Copy Signature';
+      btn.textContent = 'Copy for Gmail';
       btn.classList.remove('copied');
     }, 2000);
+  }
+
+  // Current form values, with the same placeholders the preview shows.
+  function sigValues() {
+    const v = (id) => document.getElementById(id).value.trim();
+    const phone = v('f-phone');
+    const email = v('f-email');
+    return {
+      name:  v('f-name') ? v('f-name').toUpperCase() : 'FULL NAME',
+      role:  v('f-role') ? v('f-role').toUpperCase() : 'JOB TITLE',
+      phone: phone || '+63 000 000 0000',
+      email: email || 'email@technext.asia',
+      wa:    toWaNumber(phone || '+630000000000')
+    };
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Odoo-safe signature: same content as the Gmail one, but div-based (Odoo's
+  // editor turns tables into bordered editor tables), hosted images only (Gmail
+  // blocks base64 images) and explicit sizes, since the image files are larger
+  // than they display. It goes into Odoo through the signature field's </> code view.
+  function odooSignatureHTML() {
+    const s = sigValues();
+    const H = HOSTED_BASE;
+    const F = 'Arial,Helvetica,sans-serif';
+    const icon = (file, px, extra) =>
+      '<img src="' + H + file + '" alt="" width="' + px + '" height="' + px + '" style="width:' + px + 'px;height:' + px +
+      'px;display:inline-block;vertical-align:middle;border:0;' + extra + '">';
+    const contact = (file, href, text, bottom, blank) =>
+      '  <div style="margin:0 0 ' + bottom + 'px 0;font-size:12px;font-family:' + F + ';">\n' +
+      '    ' + icon(file, 14, 'margin-right:10px;') + '\n' +
+      '    <a href="' + href + '"' + (blank ? ' target="_blank" rel="noopener"' : '') +
+      ' style="color:#444444;text-decoration:none;">' + text + '</a>\n' +
+      '  </div>';
+    const socials = [
+      ['fb.png', 'https://www.facebook.com/technextasia', 'Facebook'],
+      ['ig.png', 'https://www.instagram.com/technextasia/', 'Instagram'],
+      ['li.png', 'https://www.linkedin.com/company/technextasia/', 'LinkedIn'],
+      ['x.png',  'https://x.com/technextasia', 'X'],
+      ['yt.png', 'https://www.youtube.com/@technextasia', 'YouTube'],
+      ['tt.png', 'https://www.tiktok.com/@technextasia', 'TikTok']
+    ];
+    const social = socials.map(function (row, i) {
+      const gap = i < socials.length - 1 ? 'margin-right:6px;' : '';
+      return '<a href="' + row[1] + '" target="_blank" rel="noopener" style="text-decoration:none;">' +
+        '<img src="' + H + row[0] + '" alt="' + row[2] + '" width="26" height="26" style="width:26px;height:26px;display:inline-block;border:0;border-radius:13px;' + gap + '"></a>';
+    }).join('');
+    return [
+      '<div style="font-family:' + F + ';color:#444444;">',
+      '  <div style="margin:0 0 4px 0;line-height:1;">',
+      '    <strong style="font-size:20px;font-weight:900;color:#111111;font-family:' + F + ';vertical-align:middle;">' + escHtml(s.name) + '</strong>',
+      '    <span style="display:inline-block;vertical-align:middle;border-left:1px solid #cccccc;padding-left:10px;margin-left:10px;line-height:0;"><img src="' + H + 'logo-h.png" alt="TechNext" width="110" height="22" style="width:110px;height:22px;display:block;border:0;"></span>',
+      '  </div>',
+      '  <div style="margin:0 0 6px 0;font-size:11px;color:#888888;font-family:' + F + ';letter-spacing:1.2px;font-weight:500;">' + escHtml(s.role) + ' &bull; TECHNEXT PTE LTD.</div>',
+      contact('ph.png', 'https://wa.me/' + s.wa, escHtml(s.phone), 2, true),
+      contact('em.png', 'mailto:' + escHtml(s.email), escHtml(s.email), 2, false),
+      contact('wb.png', 'https://technext.asia', 'technext.asia', 6, true),
+      '  <div style="margin:0 0 7px 0;font-size:12px;font-family:' + F + ';">',
+      '    <a href="https://technext.asia" target="_blank" rel="noopener" style="color:#3167CA;text-decoration:none;font-weight:700;"><strong>Odoo ERP Solution and AI Automation</strong></a>',
+      '  </div>',
+      '  <div style="margin:0 0 14px 0;line-height:0;">' + social + '</div>',
+      '  <div style="margin:0 0 10px 0;line-height:0;">',
+      '    <a href="https://technext.asia" target="_blank" rel="noopener" style="text-decoration:none;"><img src="' + H + 'banner.png" alt="Tech solutions built to scale your business" width="520" height="104" style="width:520px;height:104px;max-width:100%;display:block;border:0;border-radius:12px;"></a>',
+      '  </div>',
+      '  <div style="font-size:10px;color:#999999;font-family:' + F + ';line-height:1.6;max-width:520px;">This email is confidential and meant only for the person it&rsquo;s addressed to. If you received it by mistake, please let the sender know and delete it. Sharing, copying or using it without permission is not allowed and may be unlawful.</div>',
+      '</div>'
+    ].join('\n');
+  }
+
+  function flashButton(btn, text, ok) {
+    const label = btn.dataset.label || (btn.dataset.label = btn.textContent);
+    btn.textContent = text;
+    btn.classList.toggle('copied', ok);
+    setTimeout(function () { btn.textContent = label; btn.classList.remove('copied'); }, 2000);
+  }
+
+  // Copies the Odoo HTML as plain text, for pasting into Odoo's </> code view.
+  async function copyOdooSignature(btnId) {
+    const btn = document.getElementById(btnId);
+    const markup = odooSignatureHTML();
+    let ok = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try { await navigator.clipboard.writeText(markup); ok = true; } catch (e) { /* fall through */ }
+    }
+    if (!ok) {
+      const ta = document.createElement('textarea');
+      ta.value = markup;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      ok = document.execCommand('copy');
+      ta.remove();
+    }
+    flashButton(btn, ok ? 'Copied!' : 'Copy failed', ok);
+  }
+
+  // Slug the name field into a safe filename part: "ada l. byron" -> "Ada-L-Byron".
+  function nameSlug(raw) {
+    const cleaned = (raw || '').replace(/[^A-Za-z0-9 ]/g, ' ').trim().replace(/\s+/g, ' ');
+    if (!cleaned) return '';
+    return cleaned.split(' ')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join('-');
+  }
+
+  // Download the Odoo-safe signature as a raw HTML fragment (no doctype
+  // wrapper), ready for Odoo's </> code view or another HTML field.
+  function exportSignature(btnId) {
+    const btn = document.getElementById(btnId);
+    const markup = odooSignatureHTML();
+    const slug = nameSlug(document.getElementById('f-name').value);
+    const url = URL.createObjectURL(new Blob([markup], { type: 'text/html' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = slug ? 'TechNext-Signature-' + slug + '.html' : 'TechNext-Signature.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    flashButton(btn, 'Exported!', true);
   }
 
   function updateSigTemplate() {
