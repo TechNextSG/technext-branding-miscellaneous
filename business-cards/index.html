@@ -77,34 +77,33 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 .card .safe{position:absolute;inset:0}
 .card.bleed .safe{inset:12.5px}
 
-/* front: person */
+/* front: person. Blue band bleeds off the right edge; its visible width is 104px */
 .card.front{background:#fff}
-.front .wm{position:absolute;right:-34px;top:-30px;width:150px;opacity:.06}
-.front .bar{position:absolute;left:-20px;right:-20px;bottom:-20px;height:25px;background:linear-gradient(90deg,#1E4691 0%,#3167CA 55%,#6FA0F5 100%)}
-.front .logo{position:absolute;left:24px;top:22px;width:104px;height:auto}
-.front .who{position:absolute;left:24px;top:56px;right:24px}
-.front .name{font-family:var(--font-display);font-weight:800;font-size:17px;line-height:1.1;color:#1F1F3D;text-transform:uppercase;letter-spacing:.01em;margin:0}
-.front .role{margin-top:5px;font-size:8.2px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#3167CA;line-height:1.3}
-.front .co{font-size:7.6px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#8888A0;margin-top:1px}
-.front .contacts{position:absolute;left:24px;bottom:22px;display:grid;gap:4.5px}
-.front .row{display:flex;align-items:center;gap:7px;font-size:8.8px;font-weight:500;color:#1F1F3D;line-height:1;white-space:nowrap}
-.front .ic{width:13px;height:13px;border-radius:50%;background:#3167CA;display:flex;align-items:center;justify-content:center;flex:none}
-.front .ic svg{width:7.4px;height:7.4px;display:block}
-.front .row.addr{white-space:normal;max-width:190px;line-height:1.25}
-.front .qr{position:absolute;right:22px;bottom:22px;width:62px;text-align:center}
-.front .qr .box{width:62px;height:62px;padding:4px;border:1px solid #DDE7F8;border-radius:5px;background:#fff}
-.front .qr svg{width:100%;height:100%;display:block}
-.front .qr span{display:block;margin-top:3px;font-size:5.6px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8888A0}
+.front .band{position:absolute;top:-20px;bottom:-20px;right:-20px;width:124px;padding:20px 20px 20px 0;background:linear-gradient(165deg,#4379DB 0%,#3167CA 42%,#1E4691 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
+.front .qrbox{width:66px;height:66px;padding:5px;background:#fff;border-radius:7px}
+.front .qrbox svg{width:100%;height:100%;display:block}
+.front .cap{font-size:5.6px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#DDE7F8}
+.front .mark{width:44px;height:auto}
+.front .main{position:absolute;left:24px;top:22px;bottom:21px;right:122px;display:flex;flex-direction:column}
+.front .logo{width:90px;height:auto;display:block}
+.front .who{margin-top:auto}
+.front .name{font-family:var(--font-display);font-weight:800;font-size:16px;line-height:1.12;letter-spacing:-.012em;color:#1F1F3D;margin:0}
+.front .role{margin-top:4px;font-size:7.4px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3167CA;line-height:1.3}
+.front .co{margin-top:1px;font-size:6.8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#8888A0}
+.front .rule{width:22px;height:2px;border-radius:2px;background:#3167CA;margin:10px 0 9px}
+.front .contacts{display:grid;gap:5px}
+.front .row{display:flex;align-items:center;gap:7px;font-size:8.3px;font-weight:500;color:#1F1F3D;line-height:1.2;white-space:nowrap}
+.front .row.addr{white-space:normal;align-items:flex-start}
+.front .ic{width:12px;height:12px;border-radius:50%;background:#EAF0FB;display:flex;align-items:center;justify-content:center;flex:none}
+.front .ic svg{width:6.6px;height:6.6px;display:block}
 
 /* back: brand */
-.card.back{background:radial-gradient(120% 140% at 0% 0%,#4A80E0 0%,#3167CA 38%,#1E4691 100%)}
-.back .grid{position:absolute;inset:-20px;background-image:radial-gradient(rgba(255,255,255,.16) .6px,transparent .8px);background-size:10px 10px;-webkit-mask-image:linear-gradient(115deg,transparent 35%,#000 100%);mask-image:linear-gradient(115deg,transparent 35%,#000 100%)}
-.back .wm{position:absolute;right:-46px;bottom:-60px;width:215px;opacity:.09}
-.back .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.back .logo{width:188px;height:auto}
-.back .tag{font-size:7.6px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#DDE7F8}
-.back .url{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--font-display);font-size:8.4px;font-weight:700;letter-spacing:.08em;color:#fff}
-.back .url i{display:inline-block;width:16px;height:1px;background:rgba(255,255,255,.45);vertical-align:middle;margin:0 8px}
+.card.back{background:linear-gradient(135deg,#4379DB 0%,#3167CA 42%,#1E4691 100%)}
+.back .center{position:absolute;left:0;right:0;top:0;bottom:14px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.back .logo{width:186px;height:auto;display:block}
+.back .line{width:26px;height:1.5px;border-radius:2px;background:#6FA0F5;margin:13px 0 10px}
+.back .tag{font-size:7px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#fff}
+.back .url{position:absolute;left:0;right:0;bottom:17px;text-align:center;font-family:var(--font-display);font-size:7.6px;font-weight:700;letter-spacing:.1em;color:#DDE7F8}
 
 @media (max-width:900px){
   .layout{grid-template-columns:minmax(0,1fr)}
@@ -199,10 +198,10 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
   function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
   var ICONS = {
-    phone:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>',
-    mail:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 7.2L20 6H4zm0 2.4L4 8.4V18h16V8.4z"/></svg>',
-    web:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8 8 0 0 1 18.9 8zM12 4.04A14 14 0 0 1 13.91 8h-3.82A14 14 0 0 1 12 4.04zM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4zm.82 2h2.95a15.7 15.7 0 0 0 1.38 3.56A8 8 0 0 1 5.08 16zM8.03 8H5.08a8 8 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.03 8zM12 19.96A14 14 0 0 1 10.09 16h3.82A14 14 0 0 1 12 19.96zM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4zm.25 5.56A15.7 15.7 0 0 0 15.97 16h2.95a8 8 0 0 1-4.33 3.56zM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4z"/></svg>',
-    pin:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>'
+    phone:'<svg viewBox="0 0 24 24"><path fill="#3167CA" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>',
+    mail:'<svg viewBox="0 0 24 24"><path fill="#3167CA" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 7.2L20 6H4zm0 2.4L4 8.4V18h16V8.4z"/></svg>',
+    web:'<svg viewBox="0 0 24 24"><path fill="#3167CA" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8 8 0 0 1 18.9 8zM12 4.04A14 14 0 0 1 13.91 8h-3.82A14 14 0 0 1 12 4.04zM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4zm.82 2h2.95a15.7 15.7 0 0 0 1.38 3.56A8 8 0 0 1 5.08 16zM8.03 8H5.08a8 8 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.03 8zM12 19.96A14 14 0 0 1 10.09 16h3.82A14 14 0 0 1 12 19.96zM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4zm.25 5.56A15.7 15.7 0 0 0 15.97 16h2.95a8 8 0 0 1-4.33 3.56zM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4z"/></svg>',
+    pin:'<svg viewBox="0 0 24 24"><path fill="#3167CA" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>'
   };
 
   function vcard(p){
@@ -230,20 +229,21 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
     if (p.web.trim())   rows += '<div class="row"><span class="ic">'+ICONS.web+'</span>'+esc(p.web)+'</div>';
     if (p.addr.trim())  rows += '<div class="row addr"><span class="ic">'+ICONS.pin+'</span>'+esc(p.addr)+'</div>';
     return '<div class="card front'+(opts.bleed?' bleed':'')+'"><div class="safe">'+
-      '<img class="wm" src="plane-blue.png" alt="">'+
-      '<div class="bar"></div>'+
-      '<img class="logo" src="logo-h.png" alt="TechNext">'+
-      '<div class="who"><p class="name">'+esc(p.name)+'</p><div class="role">'+esc(p.title)+'</div><div class="co">'+esc(COMPANY)+'</div></div>'+
-      '<div class="contacts">'+rows+'</div>'+
-      (opts.qr ? '<div class="qr"><div class="box">'+qrSvg(vcard(p))+'</div><span>Save contact</span></div>' : '')+
+      '<div class="band">'+(opts.qr
+        ? '<div class="qrbox">'+qrSvg(vcard(p))+'</div><span class="cap">Scan to save</span>'
+        : '<img class="mark" src="plane-white.png" alt="">')+'</div>'+
+      '<div class="main">'+
+        '<img class="logo" src="logo-h.png" alt="TechNext">'+
+        '<div class="who"><p class="name">'+esc(p.name)+'</p><div class="role">'+esc(p.title)+'</div><div class="co">'+esc(COMPANY)+'</div></div>'+
+        '<div class="rule"></div>'+
+        '<div class="contacts">'+rows+'</div>'+
+      '</div>'+
     '</div></div>';
   }
   function backHTML(opts){
     return '<div class="card back'+(opts.bleed?' bleed':'')+'"><div class="safe">'+
-      '<div class="grid"></div>'+
-      '<img class="wm" src="plane-white.png" alt="">'+
-      '<div class="center"><img class="logo" src="logo-h-white.png" alt="TechNext"><div class="tag">'+esc(TAGLINE)+'</div></div>'+
-      '<div class="url"><i></i>technext.asia<i></i></div>'+
+      '<div class="center"><img class="logo" src="logo-h-white.png" alt="TechNext"><div class="line"></div><div class="tag">'+esc(TAGLINE)+'</div></div>'+
+      '<div class="url">technext.asia</div>'+
     '</div></div>';
   }
 
