@@ -76,10 +76,14 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 .card.bleed{width:375px;height:225px}
 .card .safe{position:absolute;inset:0}
 .card.bleed .safe{inset:12.5px}
+.card .grid{position:absolute;inset:-20px;pointer-events:none}
+.front .grid{background:linear-gradient(rgba(49,103,202,.10) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(90deg,rgba(49,103,202,.10) .5px,transparent .5px) 0 0/10px 10px;-webkit-mask-image:linear-gradient(210deg,#000 0%,rgba(0,0,0,.35) 38%,transparent 62%);mask-image:linear-gradient(210deg,#000 0%,rgba(0,0,0,.35) 38%,transparent 62%)}
+.back .grid{background:linear-gradient(rgba(255,255,255,.09) .5px,transparent .5px) 0 0/12.5px 12.5px,linear-gradient(90deg,rgba(255,255,255,.09) .5px,transparent .5px) 0 0/12.5px 12.5px;-webkit-mask-image:radial-gradient(75% 85% at 50% 45%,transparent 30%,#000 100%);mask-image:radial-gradient(75% 85% at 50% 45%,transparent 30%,#000 100%)}
+.card .bg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 
 /* front: person. Blue band bleeds off the right edge; its visible width is 104px */
 .card.front{background:#fff}
-.front .band{position:absolute;top:-20px;bottom:-20px;right:-20px;width:124px;padding:20px 20px 20px 0;background:linear-gradient(165deg,#4379DB 0%,#3167CA 42%,#1E4691 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
+.front .band{position:absolute;top:-20px;bottom:-20px;right:-20px;width:124px;padding:20px 20px 20px 0;background:linear-gradient(rgba(255,255,255,.07) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(90deg,rgba(255,255,255,.07) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(165deg,#4379DB 0%,#3167CA 42%,#1E4691 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
 .front .qrbox{width:66px;height:66px;padding:5px;background:#fff;border-radius:7px}
 .front .qrbox svg{width:100%;height:100%;display:block}
 .front .cap{font-size:5.6px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#DDE7F8}
@@ -229,6 +233,7 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
     if (p.web.trim())   rows += '<div class="row"><span class="ic">'+ICONS.web+'</span>'+esc(p.web)+'</div>';
     if (p.addr.trim())  rows += '<div class="row addr"><span class="ic">'+ICONS.pin+'</span>'+esc(p.addr)+'</div>';
     return '<div class="card front'+(opts.bleed?' bleed':'')+'"><div class="safe">'+
+      '<div class="grid"></div><svg class="bg" viewBox="0 0 350 200" aria-hidden="true"><line x1="146" y1="58" x2="240" y2="58" stroke="#3167CA" stroke-opacity=".18" stroke-width=".5"/><g fill="#3167CA" fill-opacity=".08"><rect x="150" y="44" width="7" height="14" rx="1"/><rect x="163" y="38" width="7" height="20" rx="1"/><rect x="176" y="41" width="7" height="17" rx="1"/><rect x="189" y="32" width="7" height="26" rx="1"/><rect x="202" y="35" width="7" height="23" rx="1"/><rect x="215" y="26" width="7" height="32" rx="1"/><rect x="228" y="20" width="7" height="38" rx="1"/></g><polyline points="153.5,39 166.5,33 179.5,36 192.5,27 205.5,30 218.5,21 231.5,15" fill="none" stroke="#3167CA" stroke-opacity=".3" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round"/><g fill="#3167CA" fill-opacity=".4"><circle cx="153.5" cy="39" r="1.3"/><circle cx="179.5" cy="36" r="1.3"/><circle cx="205.5" cy="30" r="1.3"/><circle cx="231.5" cy="15" r="1.3"/><circle cx="231.5" cy="15" r="1.3"/></g></svg>'+
       '<div class="band">'+(opts.qr
         ? '<div class="qrbox">'+qrSvg(vcard(p))+'</div><span class="cap">Scan to save</span>'
         : '<img class="mark" src="plane-white.png" alt="">')+'</div>'+
@@ -242,6 +247,7 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
   }
   function backHTML(opts){
     return '<div class="card back'+(opts.bleed?' bleed':'')+'"><div class="safe">'+
+      '<div class="grid"></div><svg class="bg" viewBox="0 0 350 200" aria-hidden="true"><defs><linearGradient id="barea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path d="M-20 186 C 20 180, 45 168, 75 169 S 135 152, 170 152 S 235 131, 268 131 S 330 110, 370 102 L370 225 L-20 225Z" fill="url(#barea)"/><path d="M-20 186 C 20 180, 45 168, 75 169 S 135 152, 170 152 S 235 131, 268 131 S 330 110, 370 102" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width=".8" stroke-linecap="round"/><g fill="#fff" fill-opacity=".5"><circle cx="75" cy="169" r="1.5"/><circle cx="170" cy="152" r="1.5"/><circle cx="268" cy="131" r="1.5"/></g><g stroke="#fff" stroke-opacity=".12" stroke-width=".5" stroke-dasharray="1.5 2"><line x1="75" y1="169" x2="75" y2="222"/><line x1="268" y1="131" x2="268" y2="222"/></g></svg>'+
       '<div class="center"><img class="logo" src="logo-h-white.png" alt="TechNext"><div class="line"></div><div class="tag">'+esc(TAGLINE)+'</div></div>'+
       '<div class="url">technext.asia</div>'+
     '</div></div>';
