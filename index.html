@@ -436,7 +436,7 @@ footer .right{margin-left:auto}
 <!-- 2 PROFILE PHOTO -->
 <section id="profile">
   <div class="wrap">
-    <div class="sec-head"><span class="n">2</span><h2>Profile photo generator</h2><p>Upload a photo and get your branded TechNext circle photo in seconds.</p></div>
+    <div class="sec-head"><span class="n">2</span><h2>Profile photo generator</h2><p>Upload a PNG of yourself and get your branded TechNext circle photo in seconds.</p></div>
     <div class="card rv">
       <div class="card-in pp">
         <div class="pp-stage">
@@ -449,17 +449,17 @@ footer .right{margin-left:auto}
         </div>
         <div class="pp-side">
           <label class="pp-drop" id="pp-drop">
-            <input id="pp-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+            <input id="pp-file" type="file" accept="image/png,.png" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0-5 5m5-5 5 5"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             <b>Upload your photo</b>
-            <span>JPG or PNG. Drop it here or click to choose.</span>
+            <span>PNG with the background removed. Drop it here or click to choose.</span>
           </label>
-          <p class="pp-status" id="pp-status" role="status" aria-live="polite">Your photo stays on your device; the background is removed right in your browser.</p>
+          <p class="pp-status" id="pp-status" role="status" aria-live="polite">Upload a PNG with a transparent background. It stays on your device.</p>
 
           <div class="pp-opts">
             <div class="pp-row"><span class="pp-k">Ring</span>
-              <button type="button" class="chip" data-opt="ring" data-val="blue" aria-pressed="true"><i style="background:linear-gradient(45deg,#3167CA,#6FA0F5)"></i>Blue</button>
-              <button type="button" class="chip" data-opt="ring" data-val="navy" aria-pressed="false"><i style="background:linear-gradient(45deg,#16367A,#3167CA)"></i>Navy</button>
+              <button type="button" class="chip" data-opt="ring" data-val="blue" aria-pressed="true"><i style="background:linear-gradient(90deg,#5579D1,#75A1F4)"></i>Blue</button>
+              <button type="button" class="chip" data-opt="ring" data-val="deep" aria-pressed="false"><i style="background:linear-gradient(90deg,#2F63C6,#4F86E8)"></i>Deep blue</button>
             </div>
             <div class="pp-row"><span class="pp-k">Background</span>
               <button type="button" class="chip" data-opt="bg" data-val="white" aria-pressed="true">White</button>
@@ -467,7 +467,6 @@ footer .right{margin-left:auto}
               <button type="button" class="chip" data-opt="bg" data-val="none" aria-pressed="false">Transparent</button>
             </div>
             <label class="pp-check"><input id="pp-pop" type="checkbox" checked> Let the shoulders pop out over the ring</label>
-            <label class="pp-check"><input id="pp-keep" type="checkbox"> Keep my original background (no cut-out)</label>
           </div>
 
           <div class="field pp-namef"><label for="pp-name">Your name (for the file name)</label><input id="pp-name" type="text" placeholder="e.g. Pia Cachola" autocomplete="name"></div>
@@ -479,10 +478,10 @@ footer .right{margin-left:auto}
           <ul class="pp-tips">
             <li class="yes">Sharp, well lit, facing the camera, natural smile.</li>
             <li class="yes">Business attire, head and shoulders in the frame.</li>
-            <li class="yes">Plain wall behind you gives the cleanest cut-out.</li>
+            <li class="yes">PNG with the background removed (transparent), for example from remove.bg or Canva.</li>
             <li class="no">No group photos, filters, heavy shadows or low-light selfies.</li>
           </ul>
-          <p class="pp-wa">Cut-out not quite right? <a href="https://wa.me/639202478918?text=Hi%21%20I%27d%20like%20my%20TechNext%20branded%20profile%20photo.%20Here%27s%20my%20photo%3A" target="_blank" rel="noopener">Send your photo to the Marketing Lead on WhatsApp</a> (0920 247 8918) and they will edit it for you.</p>
+          <p class="pp-wa">No PNG with the background removed? <a href="https://wa.me/639202478918?text=Hi%21%20I%27d%20like%20my%20TechNext%20branded%20profile%20photo.%20Here%27s%20my%20photo%3A" target="_blank" rel="noopener">Send your photo to the Marketing Lead on WhatsApp</a> (0920 247 8918) and they will make it for you.</p>
         </div>
       </div>
       <details class="tut">
@@ -491,8 +490,8 @@ footer .right{margin-left:auto}
           <div class="tut-col">
             <h3>Make the photo</h3>
             <ol class="steps">
-              <li>Click <b>Upload your photo</b> and pick a sharp head-and-shoulders shot.</li>
-              <li>Wait a few seconds while the background is removed. The first time, the tool downloads once (about 60 MB); after that it is instant.</li>
+              <li>Remove the background from a sharp head-and-shoulders photo (for example with remove.bg or Canva) and save it as a <b>PNG</b>.</li>
+              <li>Click <b>Upload your photo</b> and choose the PNG. It is placed in the ring straight away.</li>
               <li><b>Drag</b> the photo so your head sits under the logo, and <b>zoom</b> until your shoulders fill the bottom of the ring.</li>
               <li>Pick the ring and background, then click <b>Download HD</b>.</li>
             </ol>
@@ -503,7 +502,7 @@ footer .right{margin-left:auto}
               <li>Set it as your <b>Google / Gmail profile picture</b> (steps in the email signature tutorial).</li>
               <li>Use the same file on LinkedIn, Odoo, Teams and WhatsApp so you look the same everywhere.</li>
             </ol>
-            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Gmail crops photos to a circle; the ring is sized so nothing important is cut off. Natural daylight from a window in front of you gives the cleanest result.</span></div>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Gmail crops photos to a circle; the ring sits right on that circle, so it frames your photo there too. Natural daylight from a window in front of you gives the cleanest result.</span></div>
           </div>
         </div>
       </details>
@@ -904,7 +903,7 @@ footer .right{margin-left:auto}
     spy();
   })();
 </script>
-<script src="profile-photo/generator.js?v=1" defer></script>
+<script src="profile-photo/generator.js?v=3" defer></script>
 
 </body>
 </html>
