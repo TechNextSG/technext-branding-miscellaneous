@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>TechNext Branding Miscellaneous</title>
-<meta name="description" content="TechNext staff kit: email signature generator for Gmail and Odoo, branded profile photo generator, animated logo GIF, video-call backgrounds and business cards.">
+<meta name="description" content="TechNext staff kit: email signature generator for Gmail and Odoo, branded profile photo generator, animated logo GIF, video-call backgrounds, business cards and staff ID cards.">
 <link rel="icon" type="image/png" href="business-cards/plane-blue.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -213,15 +213,21 @@ kbd{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:v
 .bc h3{font-size:20px;font-weight:700;margin-bottom:8px}
 .bc p{margin:0 0 16px;color:var(--ink-2);font-size:15px;max-width:58ch}
 .bc .acts{display:flex;gap:8px;flex-wrap:wrap}
-.mini{position:relative;width:260px;height:150px}
+.mini{position:relative;width:300px;height:166px}
 .mini div{position:absolute;width:220px;height:126px;border-radius:12px;box-shadow:var(--shadow-md)}
-.mini .back{right:0;top:0;background:var(--blue);display:grid;place-items:center}
+.mini .back{right:48px;top:0;background:var(--blue);display:grid;place-items:center}
 .mini .back img{width:44px;height:auto}
-.mini .front{left:0;bottom:0;background:#fff;border:1px solid var(--line);padding:16px}
+.mini .front{left:0;bottom:16px;background:#fff;border:1px solid var(--line);padding:16px}
 .mini .front img{width:96px;height:auto;display:block;margin-bottom:22px}
 .mini .front i{display:block;height:7px;border-radius:4px;background:var(--blue-100);margin-bottom:6px}
 .mini .front i:first-of-type{width:60%;background:var(--ink)}
 .mini .front i:last-of-type{width:45%}
+.mini .id{right:0;bottom:0;width:84px;height:134px;background:#fff;border:1px solid var(--line);overflow:hidden;border-radius:8px}
+.mini .id .hd{position:absolute;left:0;right:0;top:0;height:46px;background:var(--blue);border-radius:0 0 50% 50% / 0 0 10px 10px;display:flex;justify-content:center;padding-top:8px}
+.mini .id .hd img{width:46px;height:auto;display:block;align-self:flex-start}
+.mini .id .ph{position:absolute;left:20px;top:24px;width:44px;height:52px;border-radius:6px;background:linear-gradient(160deg,#4379DB,#1E4691);box-shadow:0 0 0 2px #fff}
+.mini .id i{position:absolute;left:18px;right:18px;top:88px;height:6px;border-radius:3px;background:var(--ink)}
+.mini .id i + i{left:26px;right:26px;top:100px;height:5px;background:var(--blue-100)}
 
 /* footer */
 footer{padding:36px 0 48px;color:var(--ink-3);font-size:13px}
@@ -269,20 +275,20 @@ footer .right{margin-left:auto}
   <div class="wrap">
     <span class="kicker"><i></i>Staff self-serve &middot; TechNext Pte. Ltd.</span>
     <h1>Your branded kit, <em>ready to use.</em></h1>
-    <p>Everything you need to look like TechNext in your inbox and on calls: the email signature, your profile photo, the animated logo, video-call backgrounds and business cards. Each section has a short tutorial.</p>
+    <p>Everything you need to look like TechNext in your inbox and on calls: the email signature, your profile photo, the animated logo, video-call backgrounds, business cards and staff ID cards. Each section has a short tutorial.</p>
     <div class="jump">
       <a href="#signature" class="rv"><span class="n">1</span><span><b>Email signature</b><small>Gmail and Odoo</small></span></a>
       <a href="#profile" class="rv"><span class="n">2</span><span><b>Profile photo</b><small>Make your branded photo</small></span></a>
       <a href="#logo" class="rv"><span class="n">3</span><span><b>Animated logo</b><small>GIF, 800 &times; 800</small></span></a>
       <a href="#backgrounds" class="rv"><span class="n">4</span><span><b>Video-call backgrounds</b><small>Zoom, Teams, Meet</small></span></a>
-      <a href="#cards" class="rv"><span class="n">5</span><span><b>Business cards</b><small>Print-ready PNG and PDF</small></span></a>
+      <a href="#cards" class="rv"><span class="n">5</span><span><b>Business &amp; ID cards</b><small>Print-ready PNG and PDF</small></span></a>
     </div>
   </div>
 </section>
 
 <nav class="subnav" aria-label="Sections">
   <div class="wrap">
-    <a href="#signature">1 Email signature</a><a href="#profile">2 Profile photo</a><a href="#logo">3 Animated logo</a><a href="#backgrounds">4 Backgrounds</a><a href="#cards">5 Business cards</a>
+    <a href="#signature">1 Email signature</a><a href="#profile">2 Profile photo</a><a href="#logo">3 Animated logo</a><a href="#backgrounds">4 Backgrounds</a><a href="#cards">5 Business &amp; ID cards</a>
   </div>
 </nav>
 
@@ -639,20 +645,22 @@ footer .right{margin-left:auto}
 <!-- 5 BUSINESS CARDS -->
 <section id="cards">
   <div class="wrap">
-    <div class="sec-head"><span class="n">5</span><h2>Business cards</h2><p>Print-ready, with a vCard QR code.</p></div>
+    <div class="sec-head"><span class="n">5</span><h2>Business &amp; ID cards</h2><p>One generator for both: business cards with a vCard QR, and staff ID cards with your photo.</p></div>
     <div class="card rv">
       <div class="card-in bc">
         <div>
-          <h3>Business card generator</h3>
-          <p>Pick your name or add yourself, preview the front (contact side with a vCard QR) and the back (blue brand side), then download a 600 or 1200 dpi PNG or a print PDF with optional bleed. Logos are vector, so the print stays sharp.</p>
+          <h3>Business &amp; ID card generator</h3>
+          <p><b>Business card</b> (3.5 &times; 2 in): pick your name or add yourself, check the contact side with its vCard QR and the blue brand side. <b>Staff ID card</b> (CR80, bank-card size): upload a PNG headshot, a transparent one gets a brand background and is framed for you; the back carries your details and a barcode. Both download as a 600 or 1200 dpi PNG or a print PDF with optional bleed.</p>
           <div class="acts">
-            <a class="btn p" href="business-cards/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>Open the generator</a>
+            <a class="btn p" href="business-cards/#business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>Business cards</a>
+            <a class="btn p" href="business-cards/#id"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>ID cards</a>
             <a class="btn" href="https://technextsg.github.io/technext-marketing-hub/branding.html#logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Logo files</a>
           </div>
         </div>
         <div class="mini" aria-hidden="true">
           <div class="back"><img src="business-cards/plane-white.svg" alt=""></div>
           <div class="front"><img src="business-cards/logo-h.svg" alt=""><i></i><i></i><i></i></div>
+          <div class="id"><span class="hd"><img src="business-cards/logo-h-white.svg" alt=""></span><span class="ph"></span><i></i><i></i></div>
         </div>
       </div>
     </div>

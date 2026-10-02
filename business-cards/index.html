@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>TechNext Business Cards</title>
+<meta name="robots" content="noindex,nofollow">
+<title>TechNext Business &amp; ID Cards</title>
+<meta name="description" content="TechNext business card and staff ID card generator: print-ready PNG and PDF, vCard QR, PNG headshot on a brand background.">
 <link rel="icon" href="plane-blue.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +13,9 @@
 <style>
 :root{
   --blue:#3167CA;--blue-700:#1E4691;--blue-300:#6FA0F5;--blue-100:#DDE7F8;--blue-050:#EAF0FB;
-  --ink:#1F1F3D;--body:#4C4C63;--muted:#8888A0;--line:#E7E4E9;--paper:#FFFFFF;--alt:#FAF9FB;
+  --ink:#1F1F3D;--ink-2:#4C4C63;--ink-3:#7A7A90;--bg:#F6F8FC;--ok:#137A4A;--body:#4C4C63;--muted:#8888A0;--line:#E7E4E9;--paper:#FFFFFF;--alt:#FAF9FB;
+  --shadow-sm:0 1px 2px rgba(31,31,61,.06),0 8px 24px -18px rgba(31,31,61,.25);
+  --ease:cubic-bezier(.2,.8,.2,1);
   --shadow-md:0 2px 6px rgba(31,31,61,.06),0 24px 48px -28px rgba(31,31,61,.35);
   --shadow-blue:0 12px 28px -12px rgba(49,103,202,.55);
   --font-display:"Plus Jakarta Sans",Inter,system-ui,sans-serif;
@@ -78,7 +81,7 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 .status{flex-basis:100%;font-size:13px;min-height:20px;margin:4px 0 0;color:var(--muted)}
 .specs{font-size:13px;color:var(--muted);margin:0}
 .specs b{color:var(--ink);font-weight:600}
-#export{position:fixed;left:-10000px;top:0;pointer-events:none}
+#export,#i-export{position:fixed;left:-10000px;top:0;pointer-events:none}
 
 /* ===================== CARD (1 CSS px = 0.01 in; 350x200 = 3.5x2 in) ===================== */
 .card{position:relative;width:350px;height:200px;overflow:hidden;font-family:var(--font-body);color:var(--body);-webkit-font-smoothing:antialiased}
@@ -118,6 +121,144 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 .back .tag{font-size:7px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#fff}
 .back .url{position:absolute;left:0;right:0;bottom:17px;text-align:center;font-family:var(--font-display);font-size:7.6px;font-weight:700;letter-spacing:.1em;color:#DDE7F8}
 
+/* header nav + tool tabs */
+header.top .back{margin-left:auto;display:flex;gap:4px}
+header.top .back a{text-decoration:none;color:var(--body);font-weight:600;font-size:14px;padding:8px 12px;border-radius:999px;transition:background .2s var(--ease-out),color .2s}
+header.top .back a:hover{background:var(--blue-050);color:var(--blue-700)}
+.tabs{display:inline-grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:22px;padding:4px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);max-width:100%}
+.tabs button{font:inherit;border:0;background:transparent;border-radius:10px;padding:10px 18px;cursor:pointer;display:flex;gap:11px;align-items:center;text-align:left;color:var(--body);transition:background .2s var(--ease-out),color .2s,box-shadow .2s}
+.tabs button:hover{background:var(--blue-050)}
+.tabs button[aria-selected="true"]{background:var(--blue);color:#fff;box-shadow:var(--shadow-blue)}
+.tabs button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.tabs svg{width:26px;height:26px;flex:none}
+.tabs b{display:block;font-size:14px;line-height:1.2}
+.tabs small{display:block;font-size:12px;opacity:.8;line-height:1.3}
+#tool-id{padding:28px 0 64px}
+header.top .back a{white-space:nowrap}
+@media (max-width:520px){header.top .back a.hub,header.top .sep,header.top b{display:none}.tabs{display:grid;width:100%}.tabs button{padding:9px 10px;gap:8px}.tabs svg{width:20px;height:20px}}
+
+/* ===================== ID CARD TOOL (scoped) ===================== */
+/* ---------- page UI (hub tokens) ---------- */
+[hidden]{display:none!important}
+#tool-id .gen{display:grid;grid-template-columns:360px minmax(0,1fr);gap:26px;align-items:start;padding-bottom:20px}
+#tool-id .pn{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow-sm)}
+#tool-id .pn + .pn{margin-top:14px}
+#tool-id .pn h2{font-family:var(--font-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px;font-weight:700}
+#tool-id .people{display:flex;flex-wrap:wrap;gap:8px}
+#tool-id .chip.add{color:var(--blue);border-style:dashed}
+#tool-id .f{display:block;margin-bottom:11px}
+#tool-id .f > span{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:5px}
+#tool-id .f input,#tool-id .f select{width:100%;font:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);background:#fff;min-width:0}
+#tool-id .f input:focus,#tool-id .f select:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
+#tool-id .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 10px}
+#tool-id .sl{display:grid;grid-template-columns:86px minmax(0,1fr) 46px;align-items:center;gap:10px;font-size:12.5px;font-weight:600;color:var(--ink-2);margin:8px 0}
+#tool-id .sl input{width:100%;accent-color:var(--blue)}
+#tool-id .sl output{font-size:12px;color:var(--ink-3);text-align:right;font-variant-numeric:tabular-nums}
+#tool-id .lbl{display:block;font-size:12px;font-weight:600;color:var(--ink);margin:14px 0 6px}
+#tool-id .seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px}
+#tool-id .seg button{border:0;background:transparent;border-radius:8px;padding:7px 4px 6px;font-size:12px;font-weight:600;color:var(--ink-2);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;transition:background .2s var(--ease),color .2s var(--ease)}
+#tool-id .seg button i{width:26px;height:26px;border-radius:7px;border:1px solid rgba(31,31,61,.12)}
+#tool-id .seg button[aria-pressed="true"]{background:#fff;color:var(--blue-700);box-shadow:var(--shadow-sm)}
+#tool-id .seg button[disabled]{opacity:.45;cursor:not-allowed}
+#tool-id .sw-blue{background:linear-gradient(160deg,#4379DB,#3167CA 45%,#1E4691)}
+#tool-id .sw-light{background:linear-gradient(180deg,#F4F7FD,#DDE7F8)}
+#tool-id .sw-white{background:#fff}
+#tool-id .drop{display:flex;gap:12px;align-items:center;border:1.5px dashed var(--blue-100);border-radius:12px;padding:10px;background:var(--blue-050);cursor:pointer;transition:border-color .2s var(--ease),background .2s var(--ease)}
+#tool-id .drop:hover,#tool-id .drop.over{border-color:var(--blue);background:#fff}
+#tool-id .drop:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#tool-id .drop canvas{width:64px;height:75px;border-radius:9px;flex:none;background:#fff;box-shadow:var(--shadow-sm)}
+#tool-id .drop b{display:block;font-size:14px;color:var(--ink)}
+#tool-id .drop span{display:block;font-size:12px;color:var(--ink-3);line-height:1.4}
+#tool-id .bgrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+#tool-id .bgrow .btn{padding:9px 12px;font-size:13px}
+#tool-id .bgst{flex-basis:100%;font-size:12.5px;color:var(--ink-3);min-height:18px;margin:0;line-height:1.45}
+#tool-id .bgst.ok{color:var(--ok)}
+#tool-id .bgst.bad{color:#B42318}
+#tool-id .linkbtn{font:inherit;font-size:12px;background:none;border:0;color:var(--ink-3);text-decoration:underline;cursor:pointer;padding:0;margin:8px 14px 0 0}
+#tool-id .linkbtn.del{color:#B42318}
+#tool-id .tg{display:flex;gap:10px;align-items:flex-start;font-size:13px;cursor:pointer;margin-top:10px;color:var(--ink-2)}
+#tool-id .tg input{margin-top:3px;accent-color:var(--blue)}
+#tool-id .tg small{display:block;color:var(--ink-3);font-size:12px}
+#tool-id .hint{font-size:12px;color:var(--ink-3);margin:8px 0 0;line-height:1.45}
+
+#tool-id .pv{position:sticky;top:84px;display:grid;gap:18px;min-width:0}
+#tool-id .sides{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+#tool-id .side h3{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:700}
+#tool-id .side h3 em{font-style:normal;letter-spacing:0;text-transform:none;font-family:var(--font-body);font-weight:500;font-size:12px}
+#tool-id .stage{position:relative;box-shadow:0 30px 60px -30px rgba(31,31,61,.5),0 2px 8px rgba(31,31,61,.08);background:#fff;overflow:hidden}
+#tool-id .stage > .idc{position:absolute;left:0;top:0;transform-origin:0 0}
+#tool-id .dl{display:flex;flex-wrap:wrap;gap:10px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r)}
+#tool-id .dl .lead{flex-basis:100%;font-size:13px;color:var(--ink-3);margin:0}
+#tool-id .dl .lead b{color:var(--ink)}
+#tool-id .quality{flex-basis:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 4px;border:0;padding:0}
+#tool-id .q{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s}
+#tool-id .q:hover{border-color:var(--blue-300)}
+#tool-id .q:has(input:checked){border-color:var(--blue);background:var(--blue-050)}
+#tool-id .q input{margin-top:3px;accent-color:var(--blue)}
+#tool-id .q b{display:block;font-size:13.5px;color:var(--ink)}
+#tool-id .q small{display:block;font-size:12px;color:var(--ink-3)}
+#tool-id .dl .btn{padding:11px 15px}
+#tool-id .dl .btn[disabled]{opacity:.55;cursor:progress}
+#tool-id .status{flex-basis:100%;font-size:13px;min-height:20px;margin:2px 0 0;color:var(--ink-3)}
+#tool-id .specs{font-size:13px;color:var(--ink-3);margin:0}
+#tool-id .specs b{color:var(--ink);font-weight:600}
+#tool-id #export{position:fixed;left:-10000px;top:0;pointer-events:none}
+
+
+#tool-id .people{margin-bottom:0}
+#tool-id .stage{border-radius:8px}
+@media (max-width:980px){#tool-id .gen{grid-template-columns:minmax(0,1fr)}#tool-id .pv{position:static}}
+@media (max-width:520px){#tool-id .quality{grid-template-columns:minmax(0,1fr)}#tool-id .dl .btn{flex:1 1 100%;justify-content:center}#tool-id .two{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- ID CARD. 1 CSS px = 0.01 in. CR80 portrait 2.125 x 3.375 in ---------- */
+.idc{position:relative;width:212.5px;height:337.5px;overflow:hidden;background:#fff;font-family:var(--font-body);color:#1F1F3D;-webkit-font-smoothing:antialiased;line-height:1.3}
+.idc.bleed{width:237.5px;height:362.5px}
+.idc .idc-safe{position:absolute;inset:0}
+.idc.bleed .idc-safe{inset:12.5px}
+.idc-slot{position:absolute;left:84.25px;top:9px;width:44px;height:7px;border-radius:4px;border:.6px dashed rgba(255,255,255,.9);background:rgba(31,31,61,.28);z-index:5}
+.idc.back .idc-slot{border-color:rgba(31,31,61,.45);background:rgba(31,31,61,.10)}
+.idc-grid{position:absolute;inset:-20px;pointer-events:none}
+
+/* front */
+.idc-hd{position:absolute;left:-20px;right:-20px;top:-20px;height:118px;border-radius:0 0 50% 50% / 0 0 22px 22px;
+  background:linear-gradient(rgba(255,255,255,.08) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(90deg,rgba(255,255,255,.08) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(165deg,#4379DB 0%,#3167CA 45%,#1E4691 100%)}
+.idc.front .idc-grid{background:linear-gradient(rgba(49,103,202,.09) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(90deg,rgba(49,103,202,.09) .5px,transparent .5px) 0 0/10px 10px;-webkit-mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.3) 30%,transparent 55%);mask-image:linear-gradient(0deg,#000 0%,rgba(0,0,0,.3) 30%,transparent 55%)}
+.idc-logo{position:absolute;left:0;right:0;top:25px;margin:0 auto;width:100px;height:auto;display:block}
+.idc-ph{position:absolute;left:42.25px;top:52px;width:128px;height:150px;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 0 0 3px #fff,0 10px 22px -10px rgba(31,31,61,.6)}
+.idc-ph img,.idc-ph canvas{display:block;width:128px;height:150px}
+.idc-who{position:absolute;left:14px;right:14px;top:210px;bottom:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.idc-name{font-family:var(--font-display);font-weight:800;font-size:15px;line-height:1.1;letter-spacing:-.012em;color:#1F1F3D;margin:0;overflow-wrap:anywhere}
+.idc-name.long{font-size:13px}
+.idc-role{margin-top:5px;font-size:6.2px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#3167CA}
+.idc-dept{margin-top:2.5px;font-size:5.6px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:#7A7A90}
+.idc-ft{position:absolute;left:-20px;right:-20px;bottom:-20px;height:51px;padding:0 34px 20px;display:flex;align-items:center;justify-content:space-between;background:#1E4691;box-shadow:inset 0 1.6px 0 #6FA0F5}
+.idc-ft div{display:flex;flex-direction:column;gap:1px}
+.idc-ft div + div{text-align:right}
+.idc-ft small{font-size:4.4px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A9C1EE}
+.idc-ft b{font-family:var(--font-display);font-size:7.2px;font-weight:700;letter-spacing:.06em;color:#fff}
+
+/* back */
+.idc.back .idc-grid{background:linear-gradient(rgba(49,103,202,.08) .5px,transparent .5px) 0 0/10px 10px,linear-gradient(90deg,rgba(49,103,202,.08) .5px,transparent .5px) 0 0/10px 10px;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.25) 22%,transparent 40%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.25) 22%,transparent 40%)}
+.idc-blogo{position:absolute;left:0;right:0;top:24px;margin:0 auto;width:88px;height:auto;display:block}
+.idc-bt{position:absolute;left:0;right:0;top:44px;text-align:center;font-size:4.8px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#7A7A90}
+.idc-bm{position:absolute;left:18px;right:18px;top:58px;bottom:40px;display:flex;flex-direction:column;justify-content:space-between}
+.idc-fl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6.5px 10px;padding:9px 10px;border:.6px solid #E3E7F0;border-radius:7px;background:#fff}
+.idc-fl .w{grid-column:1 / -1}
+.idc-fl small{display:block;font-size:4.2px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#7A7A90;margin-bottom:1px}
+.idc-fl b{display:block;font-size:6.6px;font-weight:600;color:#1F1F3D;line-height:1.25;overflow-wrap:anywhere}
+.idc-bc{text-align:center}
+.idc-bc svg{display:block;width:150px;height:19px;margin:0 auto}
+.idc-bc span{display:block;margin-top:2px;font-family:ui-monospace,Consolas,monospace;font-size:5px;letter-spacing:.3em;color:#4C4C63}
+.idc-sig{display:flex;flex-direction:column;align-items:center}
+.idc-sig i{display:block;width:96px;height:.7px;background:#1F1F3D;opacity:.55}
+.idc-sig small{font-size:4.3px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A90;margin-top:2.5px}
+.idc-note{font-size:4.9px;line-height:1.5;color:#4C4C63;text-align:center;padding:5.5px 8px;background:#EAF0FB;border-radius:6px}
+.idc-note b{color:#1E4691;font-weight:700}
+.idc-bf{position:absolute;left:-20px;right:-20px;bottom:-20px;height:50px;padding:0 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5px;background:linear-gradient(135deg,#4379DB 0%,#3167CA 45%,#1E4691 100%)}
+.idc-bf b{font-family:var(--font-display);font-size:7.4px;font-weight:700;letter-spacing:.1em;color:#fff}
+.idc-bf small{font-size:4.2px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#DDE7F8}
+
+
 @media (max-width:900px){
   .layout{grid-template-columns:minmax(0,1fr)}
 }
@@ -130,16 +271,22 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 <body>
 <header class="top"><div class="wrap">
   <img src="logo-h.svg" alt="TechNext">
-  <span class="sep"></span><b>Business Cards</b>
+  <span class="sep"></span><b>Business &amp; ID Cards</b>
+  <nav class="back" aria-label="Site"><a href="../">Branding kit</a><a class="hub" href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a></nav>
 </div></header>
 
 <main class="wrap">
   <section class="hero">
-    <h1>Business cards</h1>
-    <p>Pick a person or add a new one, check both sides, then download print-ready files. Size is 3.5 &times; 2 in (standard). The PDF can include a 1/8 in bleed if your print shop asks for it.</p>
+    <h1>Business &amp; ID cards</h1>
+    <p id="intro-biz">Pick a person or add a new one, check both sides, then download print-ready files. Size is 3.5 &times; 2 in (standard). The PDF can include a 1/8 in bleed if your print shop asks for it.</p>
+    <p id="intro-id" hidden>Upload a PNG headshot. If it has a transparent background, the person is placed on a TechNext background and framed automatically. Check the front and back, then download print-ready files at the standard CR80 size (2.125 &times; 3.375 in, the same as a bank card).</p>
+    <div class="tabs" role="tablist" aria-label="Card type">
+      <button type="button" role="tab" id="tab-biz" aria-controls="tool-biz" aria-selected="true"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="22" height="14" rx="2"/><path d="M6 11h7M6 15h5" stroke-linecap="round"/><path d="M17 6v14"/></svg><span><b>Business card</b><small>3.5 &times; 2 in, vCard QR</small></span></button>
+      <button type="button" role="tab" id="tab-id" aria-controls="tool-id" aria-selected="false" tabindex="-1"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="14" height="22" rx="2"/><path d="M11 5h4" stroke-linecap="round"/><circle cx="13" cy="11.5" r="2.6"/><path d="M9 19c.7-2.2 2.2-3.2 4-3.2s3.3 1 4 3.2" stroke-linecap="round"/></svg><span><b>Staff ID card</b><small>CR80, photo + barcode</small></span></button>
+    </div>
   </section>
 
-  <div class="layout">
+  <div class="layout" id="tool-biz" role="tabpanel" aria-labelledby="tab-biz">
     <aside class="panel" aria-label="Card details">
       <h2>Person</h2>
       <div class="people" id="people"></div>
@@ -185,13 +332,95 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
       <p class="specs"><b>File specs:</b> <span id="spec-text"></span> Logos, text, icons and the QR code are drawn from vector shapes, so edges stay sharp at either quality.</p>
     </section>
   </div>
+
+  <div id="tool-id" role="tabpanel" aria-labelledby="tab-id" hidden>
+<div class="gen">
+    <div>
+      <div class="pn">
+        <h2>Person</h2>
+        <div class="people" id="i-people"></div>
+        <button class="linkbtn" id="i-reset" type="button">Restore original details</button>
+        <button class="linkbtn del" id="i-remove" type="button" hidden>Remove this person</button>
+      </div>
+
+      <div class="pn">
+        <h2>Photo</h2>
+        <label class="drop" id="i-drop" tabindex="0">
+          <canvas id="i-thumb" width="128" height="150"></canvas>
+          <span><b id="i-drop-t">Upload a PNG headshot</b><span>PNG only, or drop a file here. A transparent background gets the brand background behind it. The photo never leaves your browser.</span></span>
+          <input id="i-file" type="file" accept="image/png,.png" hidden>
+        </label>
+        <div class="bgrow">
+          <button class="btn" id="i-b-frame" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/><circle cx="12" cy="10" r="3"/><path d="M7 18c1-3 3-4 5-4s4 1 5 4"/></svg>Auto-frame</button>
+          <p class="bgst" id="i-bgst" role="status" aria-live="polite"></p>
+        </div>
+        <span class="lbl">Background</span>
+        <div class="seg" id="i-bgsel" role="group" aria-label="Photo background">
+          <button type="button" data-v="blue"><i class="sw-blue"></i>Brand blue</button>
+          <button type="button" data-v="light"><i class="sw-light"></i>Light</button>
+          <button type="button" data-v="white"><i class="sw-white"></i>White</button>
+        </div>
+        <span class="lbl">Position and tone</span>
+        <div class="sl"><span>Zoom</span><input id="i-r-zoom" type="range" min="0.5" max="4" step="0.01"><output id="i-o-zoom"></output></div>
+        <div class="sl"><span>Left / right</span><input id="i-r-px" type="range" min="-1.5" max="1.5" step="0.01"><output id="i-o-px"></output></div>
+        <div class="sl"><span>Up / down</span><input id="i-r-py" type="range" min="-1.5" max="1.5" step="0.01"><output id="i-o-py"></output></div>
+        <div class="sl"><span>Brightness</span><input id="i-r-bright" type="range" min="-0.3" max="0.3" step="0.01"><output id="i-o-bright"></output></div>
+        <div class="sl"><span>Contrast</span><input id="i-r-contrast" type="range" min="0.7" max="1.5" step="0.01"><output id="i-o-contrast"></output></div>
+        <button class="linkbtn" id="i-clear" type="button">Remove the photo</button>
+        <p class="hint">Best results: a PNG with a transparent background, face to camera, shoulders in the shot. The background choice and Auto-frame need a transparent PNG; an opaque PNG is used as it is.</p>
+      </div>
+
+      <div class="pn">
+        <h2>Details</h2>
+        <label class="f"><span>Full name</span><input id="i-f-name" autocomplete="off"></label>
+        <label class="f"><span>Job title</span><input id="i-f-title" autocomplete="off"></label>
+        <div class="two">
+          <label class="f"><span>Department</span><input id="i-f-dept" autocomplete="off"></label>
+          <label class="f"><span>Office</span><select id="i-f-office"><option>Singapore HQ</option><option>Taguig City, Metro Manila</option><option>Ho Chi Minh City</option></select></label>
+          <label class="f"><span>ID number</span><input id="i-f-idno" autocomplete="off"></label>
+          <label class="f"><span>Blood type (optional)</span><input id="i-f-blood" autocomplete="off" placeholder="Leave blank to hide"></label>
+          <label class="f"><span>Date issued</span><input id="i-f-issued" type="date"></label>
+          <label class="f"><span>Valid until</span><input id="i-f-expires" type="date"></label>
+        </div>
+        <div class="two">
+          <label class="f"><span>Emergency contact</span><input id="i-f-ecName" autocomplete="off" placeholder="Name"></label>
+          <label class="f"><span>Emergency phone</span><input id="i-f-ecPhone" autocomplete="off" inputmode="tel"></label>
+        </div>
+        <label class="tg"><input type="checkbox" id="i-t-slot" checked><span>Show lanyard slot guide<small>Preview only, never printed. Keeps text clear of the punched slot.</small></span></label>
+        <label class="tg"><input type="checkbox" id="i-t-bleed"><span>Add 1/8 in bleed to the PDF<small>Page becomes 2.375 &times; 3.625 in. Tick it only if the printer asks for bleed.</small></span></label>
+      </div>
+    </div>
+
+    <div class="pv">
+      <div class="sides">
+        <div class="side"><h3>Front <em>Photo side</em></h3><div class="stage" id="i-stage-front"></div></div>
+        <div class="side"><h3>Back <em>Details side</em></h3><div class="stage" id="i-stage-back"></div></div>
+      </div>
+      <div class="dl">
+        <p class="lead">Downloads for <b id="i-dl-who">this card</b></p>
+        <fieldset class="quality"><legend>Quality</legend>
+          <label class="q"><input type="radio" name="iq" value="6"><span><b>HD &middot; 600 dpi</b><small>1278 &times; 2028 px. Right for any card printer.</small></span></label>
+          <label class="q"><input type="radio" name="iq" value="12"><span><b>Ultra HD &middot; 1200 dpi</b><small>2556 &times; 4056 px. Largest files, slower.</small></span></label>
+        </fieldset>
+        <button class="btn primary" data-dl="pdf" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Print PDF (front + back)</button>
+        <button class="btn" data-dl="front" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Front PNG</button>
+        <button class="btn" data-dl="back" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Back PNG</button>
+        <button class="btn" data-dl="all" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Everyone (one PDF)</button>
+        <p class="status" id="i-status" role="status" aria-live="polite"></p>
+      </div>
+      <p class="specs"><b>File specs:</b> <span id="i-spec-text"></span> Logos, text and the barcode are vector; the photo is composed at print resolution.</p>
+    </div>
+  
+  </div>
 </main>
 
 <div id="export" aria-hidden="true"></div>
+<div id="i-export" aria-hidden="true"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
 <script>
 (function(){
   var DEFAULTS = [
@@ -378,9 +607,9 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
   }
 
   var status = $('status');
-  document.querySelectorAll('[data-dl]').forEach(function(btn){
+  document.querySelectorAll('#tool-biz [data-dl]').forEach(function(btn){
     btn.addEventListener('click', async function(){
-      var kind = btn.dataset.dl, p = cur(), buttons = document.querySelectorAll('[data-dl]');
+      var kind = btn.dataset.dl, p = cur(), buttons = document.querySelectorAll('#tool-biz [data-dl]');
       buttons.forEach(function(b){ b.disabled = true; });
       status.textContent = 'Preparing file...';
       try {
@@ -415,6 +644,435 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 
   renderAll();
   if (document.fonts) document.fonts.ready.then(fit);
+})();
+</script>
+<script>
+/* ================= ID cards ================= */
+(function(){
+  /* ================= data ================= */
+  var DEFAULTS = [
+    {id:'raphael', name:'Raphael John Sarreal', title:'Project Manager', dept:'Projects', office:'Taguig City, Metro Manila', idno:'TN-0001', blood:'', issued:'2026-10-01', expires:'2027-09-30', ecName:'', ecPhone:''},
+    {id:'pia', name:'Pia Cachola', title:'General Manager', dept:'Management', office:'Taguig City, Metro Manila', idno:'TN-0002', blood:'', issued:'2026-10-01', expires:'2027-09-30', ecName:'', ecPhone:''}
+  ];
+  var VIEW0 = {zoom:1, px:0, py:0, bright:0, contrast:1, bg:'blue'};
+  var COMPANY = 'TechNext Pte. Ltd.';
+  var TAGLINE = 'Odoo ERP Solution and AI Automation';
+  var KEY = 'tn-idcards-v2', OLDKEY = 'tn-idcards-v1';
+  var FIELDS = ['name','title','dept','office','idno','blood','issued','expires','ecName','ecPhone'];
+  var FW = 128, FH = 150;   // photo frame on the card, CSS px
+
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+  function withView(p){ Object.keys(VIEW0).forEach(function(k){ if (p[k] === undefined) p[k] = VIEW0[k]; }); return p; }
+  function pick(p){ var o = {id:p.id}; FIELDS.forEach(function(k){ o[k] = p[k] || ''; }); return o; }
+  var state = null;
+  try { state = JSON.parse(localStorage.getItem(KEY)); } catch(e) {}
+  if (!state){
+    var old = null; try { old = JSON.parse(localStorage.getItem(OLDKEY)); } catch(e) {}
+    state = {people: (old && Array.isArray(old.people) && old.people.length ? old.people.map(pick) : DEFAULTS.map(clone)), cur: old && old.cur || 'raphael'};
+    try { localStorage.removeItem(OLDKEY); } catch(e) {}
+  }
+  if (!Array.isArray(state.people) || !state.people.length) state.people = DEFAULTS.map(clone);
+  DEFAULTS.forEach(function(d){ if (!state.people.some(function(p){ return p.id === d.id; })) state.people.push(clone(d)); });
+  state.people.forEach(withView);
+  var G0 = {slot:true, bleed:false, q:6};
+  Object.keys(G0).forEach(function(k){ if (state[k] === undefined) state[k] = G0[k]; });
+  if (!state.people.some(function(p){ return p.id === state.cur; })) state.cur = state.people[0].id;
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+  function cur(){ return state.people.filter(function(p){ return p.id === state.cur; })[0]; }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDate(s){ var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s||''); return m ? (+m[3]) + ' ' + MON[+m[2]-1] + ' ' + m[1] : ''; }
+  function fmtMY(s){ var m = /^(\d{4})-(\d{2})/.exec(s||''); return m ? m[2] + ' / ' + m[1] : '--'; }
+  function mk(w, h){ var c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+
+  /* ================= photo store (IndexedDB; photos are too big for localStorage) ================= */
+  var DB = (function(){
+    var op = null;
+    function open(){
+      if (!op) op = new Promise(function(res, rej){
+        try { var r = indexedDB.open('tn-idcards', 1); r.onupgradeneeded = function(){ r.result.createObjectStore('photos'); }; r.onsuccess = function(){ res(r.result); }; r.onerror = function(){ rej(r.error); }; }
+        catch(e) { rej(e); }
+      });
+      return op;
+    }
+    function run(mode, fn){
+      return open().then(function(db){ return new Promise(function(res, rej){
+        var t = db.transaction('photos', mode), rq = fn(t.objectStore('photos'));
+        t.oncomplete = function(){ res(rq && rq.result); }; t.onerror = function(){ rej(t.error); };
+      }); });
+    }
+    return {
+      get: function(k){ return run('readonly', function(s){ return s.get(k); }).catch(function(){ return null; }); },
+      set: function(k, v){ return run('readwrite', function(s){ return s.put(v, k); }).catch(function(){ return null; }); },
+      del: function(k){ return run('readwrite', function(s){ return s.delete(k); }).catch(function(){ return null; }); }
+    };
+  })();
+  var PH = {};   // id -> {orig: Image, origURL, alpha: true when the PNG has a transparent background}
+  function loadImg(src){ return new Promise(function(res, rej){ var i = new Image(); i.onload = function(){ res(i); }; i.onerror = rej; i.src = src; }); }
+  async function loadPhoto(id){
+    var v = await DB.get(id); if (!v || !v.orig) return;
+    try { PH[id] = {orig: await loadImg(v.orig), origURL: v.orig, alpha: !!v.alpha}; } catch(e) {}
+  }
+  function storePhoto(id){ var ph = PH[id]; return ph ? DB.set(id, {orig: ph.origURL, alpha: ph.alpha}) : DB.del(id); }
+
+  /* sample person, transparent background, shown until a photo is uploaded */
+  var SAMPLE = (function(){
+    var c = mk(640, 750), x = c.getContext('2d');
+    var sh = x.createLinearGradient(0, 480, 0, 750); sh.addColorStop(0, '#3A4466'); sh.addColorStop(1, '#1F2440');
+    x.fillStyle = sh; x.beginPath(); x.moveTo(40, 750); x.bezierCurveTo(50, 590, 170, 530, 320, 528); x.bezierCurveTo(470, 530, 590, 590, 600, 750); x.closePath(); x.fill();
+    x.fillStyle = '#FFFFFF'; x.beginPath(); x.moveTo(268, 534); x.lineTo(320, 625); x.lineTo(372, 534); x.closePath(); x.fill();
+    x.fillStyle = '#3167CA'; x.beginPath(); x.moveTo(311, 565); x.lineTo(329, 565); x.lineTo(336, 680); x.lineTo(320, 705); x.lineTo(304, 680); x.closePath(); x.fill();
+    x.fillStyle = '#9C8C84'; x.fillRect(284, 430, 72, 108);
+    var fg = x.createRadialGradient(305, 300, 20, 320, 330, 150); fg.addColorStop(0, '#D8C2B4'); fg.addColorStop(1, '#A68D7F');
+    x.fillStyle = fg; x.beginPath(); x.ellipse(320, 320, 104, 132, 0, 0, Math.PI*2); x.fill();
+    x.fillStyle = '#2A2630'; x.beginPath(); x.moveTo(214, 315); x.bezierCurveTo(202, 190, 272, 162, 326, 164); x.bezierCurveTo(400, 164, 440, 218, 426, 315); x.bezierCurveTo(410, 258, 376, 236, 320, 238); x.bezierCurveTo(264, 238, 232, 262, 214, 315); x.closePath(); x.fill();
+    x.fillStyle = '#3B3238'; x.beginPath(); x.ellipse(280, 325, 12, 7, 0, 0, Math.PI*2); x.ellipse(360, 325, 12, 7, 0, 0, Math.PI*2); x.fill();
+    x.strokeStyle = '#6E5650'; x.lineWidth = 5; x.lineCap = 'round'; x.beginPath(); x.arc(320, 370, 38, 0.25*Math.PI, 0.75*Math.PI); x.stroke();
+    return c;
+  })();
+
+  /* ================= photo composition ================= */
+  function srcFor(p){
+    var ph = PH[p.id];
+    if (!ph) return {img: SAMPLE, cut: true};
+    return {img: ph.orig, cut: ph.alpha};
+  }
+  function paintBg(x, W, H, bg){
+    if (bg === 'blue'){
+      var g = x.createLinearGradient(0, 0, W*0.35, H); g.addColorStop(0, '#4379DB'); g.addColorStop(0.45, '#3167CA'); g.addColorStop(1, '#1E4691');
+      x.fillStyle = g; x.fillRect(0, 0, W, H);
+      var r = x.createRadialGradient(W*0.5, H*0.36, 0, W*0.5, H*0.36, W*0.62); r.addColorStop(0, 'rgba(255,255,255,.22)'); r.addColorStop(1, 'rgba(255,255,255,0)');
+      x.fillStyle = r; x.fillRect(0, 0, W, H);
+      gridLines(x, W, H, 'rgba(255,255,255,.07)');
+    } else if (bg === 'light'){
+      var l = x.createLinearGradient(0, 0, 0, H); l.addColorStop(0, '#F4F7FD'); l.addColorStop(1, '#DDE7F8');
+      x.fillStyle = l; x.fillRect(0, 0, W, H);
+      gridLines(x, W, H, 'rgba(49,103,202,.08)');
+    } else { x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H); }
+  }
+  function gridLines(x, W, H, col){
+    var st = W / 12.8, lw = Math.max(1, W / 256); x.fillStyle = col;
+    for (var gx = st; gx < W; gx += st) x.fillRect(Math.round(gx), 0, lw, H);
+    for (var gy = st; gy < H; gy += st) x.fillRect(0, Math.round(gy), W, lw);
+  }
+  function compose(p, W){
+    var H = Math.round(W * FH / FW), c = mk(W, H), x = c.getContext('2d'), s = srcFor(p);
+    paintBg(x, W, H, s.cut ? p.bg : 'white');
+    var im = s.img, w = im.naturalWidth || im.width, h = im.naturalHeight || im.height;
+    var sc = Math.max(W / w, H / h) * p.zoom, dw = w*sc, dh = h*sc;
+    var dx = (W - dw) / 2 + p.px * W * 0.5, dy = (H - dh) / 2 + p.py * H * 0.5;
+    var t = mk(W, H), tx = t.getContext('2d'); tx.imageSmoothingQuality = 'high'; tx.drawImage(im, dx, dy, dw, dh);
+    if (+p.bright || +p.contrast !== 1){
+      var d = tx.getImageData(0, 0, W, H), a = d.data, k = +p.contrast, b = +p.bright * 255;
+      for (var i = 0; i < a.length; i += 4){
+        a[i] = (a[i] - 128) * k + 128 + b; a[i+1] = (a[i+1] - 128) * k + 128 + b; a[i+2] = (a[i+2] - 128) * k + 128 + b;
+      }
+      tx.putImageData(d, 0, 0);
+    }
+    if (s.cut){ x.save(); x.shadowColor = 'rgba(15,25,60,.30)'; x.shadowBlur = W * 0.035; x.shadowOffsetY = W * 0.012; x.drawImage(t, 0, 0); x.restore(); }
+    else x.drawImage(t, 0, 0);
+    return c;
+  }
+  /* centre the person from the PNG's alpha: head near the top, shoulders filling the width */
+  function autoFrame(p){
+    var ph = PH[p.id], im = ph ? (ph.alpha ? ph.orig : null) : SAMPLE; if (!im) return false;
+    var w = im.naturalWidth || im.width, h = im.naturalHeight || im.height, k = Math.min(1, 300 / Math.max(w, h));
+    var sw = Math.round(w*k), sh = Math.round(h*k), c = mk(sw, sh), x = c.getContext('2d'); x.drawImage(im, 0, 0, sw, sh);
+    var d = x.getImageData(0, 0, sw, sh).data, x0 = sw, y0 = sh, x1 = -1, y1 = -1, i, j;
+    for (j = 0; j < sh; j++) for (i = 0; i < sw; i++) if (d[(j*sw + i)*4 + 3] > 128){ if (i < x0) x0 = i; if (i > x1) x1 = i; if (j < y0) y0 = j; if (j > y1) y1 = j; }
+    if (x1 < 0) return false;
+    x0 /= k; x1 = (x1 + 1) / k; y0 /= k; y1 = (y1 + 1) / k;
+    var bw = x1 - x0, bh = y1 - y0, W = FW, H = FH;
+    var sc = Math.max(0.94 * W / bw, 0.91 * H / bh);
+    var dx = W/2 - (x0 + x1)/2 * sc, dy = 0.09*H - y0*sc, cover = Math.max(W / w, H / h);
+    p.zoom = Math.min(4, Math.max(0.5, sc / cover));
+    sc = cover * p.zoom;
+    p.px = Math.max(-1.5, Math.min(1.5, (dx - (W - w*sc)/2) / (W*0.5)));
+    p.py = Math.max(-1.5, Math.min(1.5, (dy - (H - h*sc)/2) / (H*0.5)));
+    return true;
+  }
+
+  /* ================= card markup ================= */
+  function frontHTML(p, o){
+    var long = (p.name||'').length > 22 ? ' long' : '';
+    var dept = [p.dept, p.office].filter(function(s){ return (s||'').trim(); }).map(esc).join(' &middot; ');
+    return '<div class="idc front'+(o.bleed?' bleed':'')+'"><div class="idc-safe">'+
+      '<div class="idc-grid"></div><div class="idc-hd"></div>'+
+      (o.slot ? '<div class="idc-slot"></div>' : '')+
+      '<img class="idc-logo" src="logo-h-white.svg" alt="TechNext">'+
+      '<div class="idc-ph">'+(o.photo ? '<img src="'+o.photo+'" alt="">' : '')+'</div>'+
+      '<div class="idc-who"><p class="idc-name'+long+'">'+esc(p.name)+'</p><div class="idc-role">'+esc(p.title)+'</div>'+(dept ? '<div class="idc-dept">'+dept+'</div>' : '')+'</div>'+
+      '<div class="idc-ft"><div><small>ID no.</small><b>'+esc(p.idno || '--')+'</b></div><div><small>Valid to</small><b>'+esc(fmtMY(p.expires))+'</b></div></div>'+
+    '</div></div>';
+  }
+  function fld(label, val, wide){ return '<div'+(wide?' class="w"':'')+'><small>'+label+'</small><b>'+(val ? esc(val) : '&ndash;')+'</b></div>'; }
+  function backHTML(p, o){
+    var blood = (p.blood||'').trim();
+    var ec = [p.ecName, p.ecPhone].map(function(s){ return (s||'').trim(); }).filter(Boolean).join(' \u00b7 ');
+    var rows = fld('ID number', p.idno) + fld('Department', p.dept) +
+      fld('Date issued', fmtDate(p.issued)) + fld('Valid until', fmtDate(p.expires)) +
+      fld('Office', p.office, !blood) + (blood ? fld('Blood type', blood) : '') +
+      fld('In case of emergency', ec, true);
+    return '<div class="idc back'+(o.bleed?' bleed':'')+'"><div class="idc-safe">'+
+      '<div class="idc-grid"></div>'+
+      (o.slot ? '<div class="idc-slot"></div>' : '')+
+      '<img class="idc-blogo" src="logo-h.svg" alt="TechNext">'+
+      '<div class="idc-bt">Staff identification</div>'+
+      '<div class="idc-bm">'+
+        '<div class="idc-fl">'+rows+'</div>'+
+        '<div class="idc-bc"><svg data-code="'+esc(p.idno || 'TN')+'"></svg><span>'+esc(p.idno || '')+'</span></div>'+
+        '<div class="idc-sig"><i></i><small>Authorised signature</small></div>'+
+        '<div class="idc-note">This card is the property of <b>'+COMPANY+'</b> and must be shown on request. If found, please return it to 261 Waterloo Street #03-36, Singapore 180261 or email hello@technext.asia.</div>'+
+      '</div>'+
+      '<div class="idc-bf"><b>technext.asia</b><small>'+esc(TAGLINE)+'</small></div>'+
+    '</div></div>';
+  }
+  function hydrate(root){
+    root.querySelectorAll('svg[data-code]').forEach(function(s){
+      try {
+        JsBarcode(s, s.getAttribute('data-code'), {format:'CODE128', displayValue:false, margin:0, height:40, width:2, lineColor:'#1F1F3D', background:'transparent'});
+        var w = parseFloat(s.getAttribute('width')), h = parseFloat(s.getAttribute('height'));
+        s.setAttribute('viewBox', '0 0 ' + w + ' ' + h); s.setAttribute('preserveAspectRatio', 'none');
+        s.removeAttribute('width'); s.removeAttribute('height'); s.removeAttribute('style');
+      } catch(e) {}
+    });
+  }
+
+  /* ================= UI ================= */
+  var $ = function(id){ return document.getElementById('i-' + id); };
+  var F = {}; FIELDS.forEach(function(k){ F[k] = $('f-' + k); });
+  var R = {zoom:$('r-zoom'), px:$('r-px'), py:$('r-py'), bright:$('r-bright'), contrast:$('r-contrast')};
+  var stF = $('stage-front'), stB = $('stage-back'), bgst = $('bgst');
+
+  function setBg(msg, cls){ bgst.textContent = msg || ''; bgst.className = 'bgst' + (cls ? ' ' + cls : ''); }
+  function renderPeople(){
+    var h = '';
+    state.people.forEach(function(p){ h += '<button type="button" class="chip" data-id="'+esc(p.id)+'" aria-pressed="'+(p.id === state.cur)+'">'+esc(p.name.split(' ')[0] || 'New')+'</button>'; });
+    $('people').innerHTML = h + '<button type="button" class="chip add" data-id="__add">+ Add person</button>';
+  }
+  function outs(){
+    var p = cur();
+    $('o-zoom').textContent = (+p.zoom).toFixed(2) + 'x';
+    $('o-px').textContent = Math.round(p.px*100); $('o-py').textContent = Math.round(p.py*100);
+    $('o-bright').textContent = (p.bright > 0 ? '+' : '') + Math.round(p.bright*100);
+    $('o-contrast').textContent = Math.round(p.contrast*100) + '%';
+  }
+  function photoUI(){
+    var p = cur(), ph = PH[p.id];
+    var flat = !!ph && !ph.alpha;
+    $('drop-t').textContent = ph ? 'Replace the photo' : 'Upload a PNG headshot';
+    $('b-frame').disabled = flat;
+    $('clear').hidden = !ph;
+    document.querySelectorAll('#i-bgsel button').forEach(function(b){ b.setAttribute('aria-pressed', !flat && b.dataset.v === p.bg); b.disabled = flat; });
+  }
+  function fillForm(){
+    var p = cur();
+    FIELDS.forEach(function(k){ F[k].value = p[k] || ''; });
+    Object.keys(R).forEach(function(k){ R[k].value = p[k]; });
+    var isDefault = DEFAULTS.some(function(d){ return d.id === p.id; });
+    $('reset').hidden = !isDefault; $('remove').hidden = isDefault;
+    $('dl-who').textContent = p.name || 'this card';
+    outs(); photoUI();
+  }
+  function fit(){
+    var w = stF.closest('.sides').clientWidth, two = w >= 2*212.5*0.9 + 26;
+    var s = Math.min(two ? (w - 26) / 2 / 212.5 : w / 212.5, 1.55);
+    [stF, stB].forEach(function(st){
+      st.style.width = (212.5*s) + 'px'; st.style.height = (337.5*s) + 'px'; st.style.borderRadius = (8*s) + 'px';
+      var c = st.firstChild; if (c) c.style.transform = 'scale(' + s + ')';
+    });
+  }
+  var raf = 0;
+  function renderCards(){
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function(){
+      var p = cur();
+      stB.innerHTML = backHTML(p, {slot: state.slot}); hydrate(stB);
+      stF.innerHTML = frontHTML(p, {slot: state.slot});
+      var c = compose(p, FW*3); c.style.width = FW + 'px'; c.style.height = FH + 'px';
+      stF.querySelector('.idc-ph').appendChild(c);
+      var t = $('thumb').getContext('2d'); t.clearRect(0, 0, 128, 150); t.drawImage(c, 0, 0, 128, 150);
+      fit();
+    });
+  }
+  function renderAll(){ renderPeople(); fillForm(); renderCards(); }
+
+
+  $('people').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if (!b) return;
+    if (b.dataset.id === '__add'){
+      var id = 'p' + Date.now();
+      state.people.push(withView({id:id, name:'New Person', title:'Job Title', dept:'', office:'Singapore HQ', idno:'TN-' + String(state.people.length + 1).padStart(4, '0'), blood:'', issued:new Date().toISOString().slice(0,10), expires:'', ecName:'', ecPhone:''}));
+      state.cur = id;
+    } else state.cur = b.dataset.id;
+    save(); setBg(''); renderAll();
+    if (b.dataset.id === '__add') F.name.select();
+  });
+  FIELDS.forEach(function(k){
+    F[k].addEventListener('input', function(){
+      cur()[k] = F[k].value; save(); renderCards();
+      if (k === 'name'){ $('dl-who').textContent = F.name.value || 'this card'; var chip = $('people').querySelector('[aria-pressed="true"]'); if (chip) chip.textContent = F.name.value.split(' ')[0] || 'New'; }
+    });
+  });
+  Object.keys(R).forEach(function(k){ R[k].addEventListener('input', function(){ cur()[k] = +R[k].value; outs(); save(); renderCards(); }); });
+  $('bgsel').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b || b.disabled) return; cur().bg = b.dataset.v; save(); photoUI(); renderCards(); });
+  $('b-frame').addEventListener('click', function(){ var p = cur(); if (autoFrame(p)){ save(); fillForm(); renderCards(); } });
+  $('clear').addEventListener('click', function(){ var p = cur(); delete PH[p.id]; DB.del(p.id); Object.keys(VIEW0).forEach(function(k){ p[k] = VIEW0[k]; }); save(); setBg(''); fillForm(); renderCards(); });
+  $('t-slot').addEventListener('change', function(){ state.slot = this.checked; save(); renderCards(); });
+  $('t-bleed').addEventListener('change', function(){ state.bleed = this.checked; save(); });
+  $('reset').addEventListener('click', function(){
+    var d = DEFAULTS.filter(function(x){ return x.id === state.cur; })[0]; if (!d) return;
+    var p = cur(); FIELDS.forEach(function(k){ p[k] = d[k]; }); save(); renderAll();
+  });
+  $('remove').addEventListener('click', function(){
+    DB.del(state.cur); delete PH[state.cur];
+    state.people = state.people.filter(function(p){ return p.id !== state.cur; });
+    state.cur = state.people[0].id; save(); renderAll();
+  });
+
+  // upload: PNG only, up to 1600 px on the long side (enough for 1200 dpi), transparency kept, stored in IndexedDB
+  function takeFile(file){
+    if (!file || !(file.type === 'image/png' || /\.png$/i.test(file.name || ''))){ setBg('Please upload a PNG file.', 'bad'); return; }
+    var p = cur(), rd = new FileReader();
+    rd.onload = function(){
+      var im = new Image();
+      im.onload = async function(){
+        var sc = Math.min(1, 1600 / Math.max(im.width, im.height)), c = mk(Math.round(im.width*sc), Math.round(im.height*sc));
+        var x = c.getContext('2d'); x.drawImage(im, 0, 0, c.width, c.height);
+        var d = x.getImageData(0, 0, c.width, c.height).data, alpha = false;
+        for (var i = 3; i < d.length; i += 16) if (d[i] < 250){ alpha = true; break; }
+        var url = c.toDataURL('image/png');
+        PH[p.id] = {orig: await loadImg(url), origURL: url, alpha: alpha};
+        await storePhoto(p.id);
+        Object.keys(VIEW0).forEach(function(k){ p[k] = VIEW0[k]; });
+        if (alpha) autoFrame(p); else p.py = c.height > c.width * 1.2 ? -0.15 : 0;
+        save(); fillForm(); renderCards();
+        setBg(alpha ? 'Transparent PNG: brand background added and photo framed.' : 'Photo added. It has no transparent background, so it is used as it is.', 'ok');
+      };
+      im.onerror = function(){ setBg('That PNG could not be read. Try exporting it again.', 'bad'); };
+      im.src = rd.result;
+    };
+    rd.readAsDataURL(file);
+  }
+  var drop = $('drop');
+  $('file').addEventListener('change', function(){ takeFile(this.files[0]); this.value = ''; });
+  drop.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); $('file').click(); } });
+  ['dragenter','dragover'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave','drop'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(e){ takeFile(e.dataTransfer.files[0]); });
+
+  if (state.q !== 6 && state.q !== 12) state.q = 6;
+  function specText(){
+    $('spec-text').textContent = 'PNGs are ' + Math.ceil(212.5)*state.q + ' \u00d7 ' + Math.ceil(337.5)*state.q + ' px (' + state.q*100 + ' dpi). The PDF has one page per side at the exact card size.';
+  }
+  document.querySelectorAll('input[name=iq]').forEach(function(r){
+    r.checked = +r.value === state.q;
+    r.addEventListener('change', function(){ state.q = +this.value; save(); specText(); });
+  });
+  $('t-slot').checked = state.slot; $('t-bleed').checked = state.bleed;
+  specText();
+  window.addEventListener('resize', fit);
+
+  /* ================= export ================= */
+  var fontCSS = null;
+  function toDataURL(blob){ return new Promise(function(res){ var r = new FileReader(); r.onload = function(){ res(r.result); }; r.readAsDataURL(blob); }); }
+  async function getFontCSS(){
+    if (fontCSS !== null) return fontCSS;
+    try {
+      var css = await (await fetch(document.getElementById('gf').href)).text();
+      css = css.split(/(?=\/\*\s*[\w-]+\s*\*\/)/).filter(function(b){ return /^\/\*\s*latin(-ext)?\s*\*\//.test(b); }).join('\n');
+      var urls = Array.from(new Set((css.match(/url\((https:[^)]+)\)/g) || []).map(function(u){ return u.slice(4, -1); })));
+      var map = {};
+      await Promise.all(urls.map(async function(u){ map[u] = await toDataURL(await (await fetch(u)).blob()); }));
+      urls.forEach(function(u){ css = css.split(u).join(map[u]); });
+      fontCSS = css;
+    } catch(e) { fontCSS = ''; }
+    return fontCSS;
+  }
+  async function renderPNG(html){
+    var box = $('export'); box.innerHTML = html; hydrate(box);
+    var node = box.firstChild;
+    await Promise.all(Array.from(node.querySelectorAll('img')).map(function(im){ return im.decode ? im.decode().catch(function(){}) : null; }));
+    var css = await getFontCSS(), opts = {pixelRatio: state.q, cacheBust: false};
+    if (css) opts.fontEmbedCSS = css;
+    var url = await htmlToImage.toPng(node, opts);
+    box.innerHTML = '';
+    return url;
+  }
+  function photoURL(p){ return compose(p, Math.round(FW * state.q)).toDataURL('image/png'); }
+  function slug(s){ return (s || 'card').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+  function saveURL(url, name){ var a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
+  var status = $('status');
+
+  document.querySelectorAll('#tool-id [data-dl]').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      var kind = btn.dataset.dl, p = cur(), buttons = document.querySelectorAll('#tool-id [data-dl]'), dpi = state.q*100;
+      buttons.forEach(function(b){ b.disabled = true; });
+      status.textContent = 'Preparing file...';
+      try {
+        await document.fonts.ready;
+        if (kind === 'front'){
+          saveURL(await renderPNG(frontHTML(p, {photo: photoURL(p)})), 'technext-id-' + slug(p.name) + '-front-' + dpi + 'dpi.png');
+        } else if (kind === 'back'){
+          saveURL(await renderPNG(backHTML(p, {})), 'technext-id-' + slug(p.name) + '-back-' + dpi + 'dpi.png');
+        } else {
+          var list = kind === 'all' ? state.people : [p], bl = state.bleed;
+          var w = bl ? 2.375 : 2.125, h = bl ? 3.625 : 3.375;
+          var doc = new jspdf.jsPDF({orientation:'portrait', unit:'in', format:[w, h], compress:true});
+          for (var i = 0; i < list.length; i++){
+            status.textContent = 'Rendering ' + list[i].name + ' (' + (i+1) + ' of ' + list.length + ')...';
+            var fr = await renderPNG(frontHTML(list[i], {photo: photoURL(list[i]), bleed: bl}));
+            var bk = await renderPNG(backHTML(list[i], {bleed: bl}));
+            if (i) doc.addPage([w, h], 'portrait');
+            doc.addImage(fr, 'PNG', 0, 0, w, h, undefined, 'FAST');
+            doc.addPage([w, h], 'portrait');
+            doc.addImage(bk, 'PNG', 0, 0, w, h, undefined, 'FAST');
+          }
+          doc.setProperties({title: 'TechNext staff ID cards', creator: 'TechNext'});
+          doc.save(kind === 'all' ? 'technext-id-cards-all-' + dpi + 'dpi.pdf' : 'technext-id-' + slug(p.name) + '-' + dpi + 'dpi.pdf');
+        }
+        status.textContent = 'Downloaded.';
+      } catch(e) {
+        console.error(e);
+        status.textContent = 'Something went wrong making the file. Reload the page and try again.';
+      }
+      buttons.forEach(function(b){ b.disabled = false; });
+      photoUI();
+    });
+  });
+
+  renderAll();
+  Promise.all(state.people.map(function(p){ return loadPhoto(p.id); })).then(function(){ fillForm(); renderCards(); });
+  if (document.fonts) document.fonts.ready.then(fit);
+  window.__idc = {state: state, PH: PH, takeFile: takeFile, autoFrame: autoFrame};
+})();
+</script>
+<script>
+/* ================= tabs: #id opens the ID card tool, #business the business card; last tab remembered ================= */
+(function(){
+  var TABS = {biz: 'business', id: 'id'}, KEY = 'tn-cards-tab';
+  function show(k, push){
+    Object.keys(TABS).forEach(function(t){
+      var on = t === k, b = document.getElementById('tab-' + t);
+      b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1;
+      document.getElementById('tool-' + t).hidden = !on;
+      document.getElementById('intro-' + t).hidden = !on;
+    });
+    try { localStorage.setItem(KEY, k); } catch(e) {}
+    if (push) history.replaceState(null, '', '#' + TABS[k]);
+    window.dispatchEvent(new Event('resize'));
+  }
+  function fromHash(){ var h = location.hash.slice(1); return h === 'id' ? 'id' : (h === 'business' ? 'biz' : null); }
+  var start = fromHash(); if (!start){ try { start = localStorage.getItem(KEY); } catch(e) {} }
+  show(start === 'id' ? 'id' : 'biz', false);
+  document.querySelectorAll('.tabs [role=tab]').forEach(function(b){
+    b.addEventListener('click', function(){ show(b.id.slice(4), true); });
+    b.addEventListener('keydown', function(e){
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var k = b.id === 'tab-biz' ? 'id' : 'biz'; show(k, true); document.getElementById('tab-' + k).focus(); e.preventDefault();
+    });
+  });
+  window.addEventListener('hashchange', function(){ var k = fromHash(); if (k) show(k, false); });
 })();
 </script>
 </body>
