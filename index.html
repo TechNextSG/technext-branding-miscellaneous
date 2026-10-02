@@ -149,6 +149,14 @@ kbd{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:v
 /* animated logo */
 .gif{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:center}
 .gif img{width:180px;height:180px;border-radius:var(--r);border:1px solid var(--line);background:#fff;display:block}
+.gif-pair{display:flex;gap:14px}
+.gif-pair figure{margin:0;display:grid;gap:8px;justify-items:center}
+.gif-pair img{border-radius:50%;box-shadow:var(--shadow-sm)}
+.gif-pair figcaption{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.gif-lead{margin-top:8px}
+.gif-dl{display:flex;flex-wrap:wrap;gap:8px}
+.gif-small{margin:12px 0 0;font-size:13px;color:var(--ink-2)}
+.gif-small a{color:var(--blue);font-weight:600}
 .specs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
 .specs span{font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
 
@@ -198,6 +206,7 @@ footer .right{margin-left:auto}
   .bar .t{width:100%}
   .gif{grid-template-columns:minmax(0,1fr)}
   .gif img{width:140px;height:140px}
+  .gif-pair img{width:128px;height:128px}
   .faces{gap:8px}
 }
 </style>
@@ -375,7 +384,7 @@ footer .right{margin-left:auto}
               <li>Click <b>Add profile picture</b> (or <b>Change</b>) and upload your image.</li>
               <li>Crop or reposition it, then click <b>Save as profile picture</b>.</li>
             </ol>
-            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Profile pictures show as a still image, so animated GIFs won&rsquo;t move. It can take a few minutes to update everywhere.</span></div>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Animated GIFs play in Google Chat, Meet and opened emails; the inbox list shows their first frame. It can take a few minutes to update everywhere.</span></div>
           </div>
         </div>
       </details>
@@ -434,23 +443,41 @@ footer .right{margin-left:auto}
 <!-- 3 ANIMATED LOGO -->
 <section id="logo">
   <div class="wrap">
-    <div class="sec-head"><span class="n">3</span><h2>Animated logo</h2><p>For emails and presentations.</p></div>
+    <div class="sec-head"><span class="n">3</span><h2>Animated logo</h2><p>For your Gmail profile, emails and presentations.</p></div>
     <div class="card rv">
       <div class="card-in gif">
-        <img src="sig/logo-animation.gif" alt="TechNext animated logo" width="180" height="180">
+        <div class="gif-pair">
+          <figure><img src="animated-logo/technext-profile-light-256.gif" alt="TechNext animated logo, light" width="180" height="180"><figcaption>Light</figcaption></figure>
+          <figure><img src="animated-logo/technext-profile-blue-256.gif" alt="TechNext animated logo, blue" width="180" height="180"><figcaption>Blue</figcaption></figure>
+        </div>
         <div>
           <h3 style="font-size:20px;font-weight:700">TechNext logo animation</h3>
-          <div class="specs"><span>GIF</span><span>800 &times; 800 px</span><span>Loops</span><span>White background</span></div>
-          <button class="btn p" id="btn-gif" type="button" onclick="downloadGif()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Download GIF</button>
+          <p class="lead gif-lead">The technext.asia intro in a circle: the plane loops in with its trail, lands with a ripple and sparks, and a light sweeps across it.</p>
+          <div class="specs"><span>GIF</span><span>Loops</span><span>Light or blue</span><span>512 &times; 512 px</span><span>256 px for Gmail</span></div>
+          <div class="gif-dl">
+            <button class="btn p" type="button" onclick="downloadGif('light', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Download light</button>
+            <button class="btn p" type="button" onclick="downloadGif('blue', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Download blue</button>
+          </div>
+          <p class="gif-small">Gmail profile size (256 &times; 256 px, under 1 MB): <a href="animated-logo/technext-profile-light-256.gif" download="TechNext-Profile-Light.gif">light</a> &middot; <a href="animated-logo/technext-profile-blue-256.gif" download="TechNext-Profile-Blue.gif">blue</a></p>
         </div>
       </div>
       <details class="tut">
-        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>Tutorial <small>Slides and email</small></summary>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>Tutorial <small>Gmail profile, slides and email</small></summary>
         <div class="tut-body">
+          <div class="tut-col">
+            <h3>As your Gmail profile picture</h3>
+            <ol class="steps">
+              <li>Download the <b>Gmail profile size</b> GIF (light or blue) above.</li>
+              <li>In <b>Gmail</b>, click your <b>profile photo</b> in the top-right circle, then <b>Manage your Google Account</b>.</li>
+              <li>Go to <b>Personal info</b> and click your photo under &ldquo;Profile picture&rdquo;.</li>
+              <li>Click <b>Change</b>, upload the GIF, keep the plane centred in the circle and click <b>Save as profile picture</b>.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>The animation plays in <b>Google Chat</b>, <b>Meet</b>, your expanded profile and opened emails. The inbox list shows the first frame, which is the finished logo.</span></div>
+          </div>
           <div class="tut-col">
             <h3>In a presentation (PowerPoint / Google Slides)</h3>
             <ol class="steps">
-              <li>Click <b>Download GIF</b> to save the file.</li>
+              <li>Click <b>Download light</b> or <b>Download blue</b> to save the 512 px GIF.</li>
               <li>In your slide, go to <b>Insert &rarr; Image</b> (or <b>Insert &rarr; Picture</b>) and pick the GIF.</li>
               <li>Resize and position it. It animates automatically in <b>Slide Show / Present</b> mode.</li>
             </ol>
@@ -766,11 +793,16 @@ footer .right{margin-left:auto}
     return d;
   }
 
-  function downloadGif() {
-    const btn = document.getElementById('btn-gif');
+  // The animated logo, light or blue, at 512 px (sig/logo-animation.gif keeps its old URL with the new design).
+  function downloadGif(variant, btn) {
+    const files = {
+      light: ['sig/logo-animation.gif', 'TechNext-Logo-Animation.gif'],
+      blue: ['animated-logo/technext-logo-blue.gif', 'TechNext-Logo-Animation-Blue.gif']
+    };
+    const f = files[variant] || files.light;
     const a = document.createElement('a');
-    a.href = 'sig/logo-animation.gif';
-    a.download = 'TechNext-Logo-Animation.gif';
+    a.href = f[0];
+    a.download = f[1];
     document.body.appendChild(a);
     a.click();
     a.remove();

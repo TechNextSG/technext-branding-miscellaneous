@@ -10,7 +10,7 @@ Design follows the current TechNext brand (same tokens as the Marketing Hub: #31
 
 1. **Email signature** (`#signature`): fill in name, title, phone, email; **Copy for Gmail**, **Copy for Odoo** or **Export HTML**. Tutorial covers Gmail, Odoo and the Google profile picture.
 2. **Profile photo** (`#profile`): branded circle-frame samples, photo checklist, WhatsApp hand-off to the Marketing Lead.
-3. **Animated logo** (`#logo`): download the 800x800 GIF; tutorial for slides and email.
+3. **Animated logo** (`#logo`): the technext.asia intro as a looping GIF, light or blue, 512 px for slides and email and 256 px for a Gmail profile picture; tutorials for each.
 4. **Video-call backgrounds** (`#backgrounds`): 4 designs, Normal + Mirrored (files are `*-inverted.png`), 1920x1080; tutorial for Zoom, Teams, Meet.
 5. **Business cards** (`#cards`): links to the generator in `business-cards/`.
 
@@ -24,4 +24,5 @@ Every copied email signature hot-links the images in `sig/` from this repo's Git
 
 - `index.html` — the branding hub page (displays local images; the Copy button rewrites image URLs to the hosted GitHub Pages ones so they work in recipients' inboxes)
 - `sig/` — email signature assets: horizontal logo, banner, animated logo GIF, and social/contact icons
+- `animated-logo/` — the blue animated logo (512 px) and the Gmail-size (256 px) light and blue GIFs; the light 512 px GIF stays at `sig/logo-animation.gif`
 - `backgrounds/` — 4 video-call background designs × Normal + Inverted (8 PNGs, 1920×1080)
