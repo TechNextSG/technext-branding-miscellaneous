@@ -119,6 +119,7 @@ label.f input:focus{outline:2px solid var(--blue-100);border-color:var(--blue)}
 .back .logo{width:186px;height:auto;display:block}
 .back .line{width:26px;height:1.5px;border-radius:2px;background:#6FA0F5;margin:13px 0 10px}
 .back .tag{font-size:7px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#fff}
+.back .center .svc{margin-top:4px;font-size:5.6px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9D9FA}
 .back .url{position:absolute;left:0;right:0;bottom:17px;text-align:center;font-family:var(--font-display);font-size:7.6px;font-weight:700;letter-spacing:.1em;color:#DDE7F8}
 
 /* header nav + tool tabs */
@@ -257,6 +258,7 @@ header.top .back a{white-space:nowrap}
 .idc-bf{position:absolute;left:-20px;right:-20px;bottom:-20px;height:50px;padding:0 20px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5px;background:linear-gradient(135deg,#4379DB 0%,#3167CA 45%,#1E4691 100%)}
 .idc-bf b{font-family:var(--font-display);font-size:7.4px;font-weight:700;letter-spacing:.1em;color:#fff}
 .idc-bf small{font-size:4.2px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#DDE7F8}
+.idc-bf small.idc-svc{font-weight:500;color:#C9D9FA}
 
 
 @media (max-width:900px){
@@ -429,6 +431,7 @@ header.top .back a{white-space:nowrap}
   ];
   var COMPANY = 'TechNext Pte. Ltd.';
   var TAGLINE = 'Odoo ERP Solution and AI Automation';
+  var SERVICES = 'IoT \u00b7 Apps \u00b7 Networks \u00b7 Cyber Security';
   var KEY = 'tn-bizcards-v1';
 
   function clone(o){ return JSON.parse(JSON.stringify(o)); }
@@ -489,7 +492,7 @@ header.top .back a{white-space:nowrap}
   function backHTML(opts){
     return '<div class="card back'+(opts.bleed?' bleed':'')+'"><div class="safe">'+
       '<div class="grid"></div><svg class="bg" viewBox="0 0 350 200" aria-hidden="true"><defs><linearGradient id="barea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path d="M-20 186 C 20 180, 45 168, 75 169 S 135 152, 170 152 S 235 131, 268 131 S 330 110, 370 102 L370 225 L-20 225Z" fill="url(#barea)"/><path d="M-20 186 C 20 180, 45 168, 75 169 S 135 152, 170 152 S 235 131, 268 131 S 330 110, 370 102" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width=".8" stroke-linecap="round"/><g fill="#fff" fill-opacity=".5"><circle cx="75" cy="169" r="1.5"/><circle cx="170" cy="152" r="1.5"/><circle cx="268" cy="131" r="1.5"/></g><g stroke="#fff" stroke-opacity=".12" stroke-width=".5" stroke-dasharray="1.5 2"><line x1="75" y1="169" x2="75" y2="222"/><line x1="268" y1="131" x2="268" y2="222"/></g></svg>'+
-      '<div class="center"><img class="logo" src="logo-h-white.svg" alt="TechNext"><div class="line"></div><div class="tag">'+esc(TAGLINE)+'</div></div>'+
+      '<div class="center"><img class="logo" src="logo-h-white.svg" alt="TechNext"><div class="line"></div><div class="tag">'+esc(TAGLINE)+'</div><div class="svc">'+esc(SERVICES)+'</div></div>'+
       '<div class="url">technext.asia</div>'+
     '</div></div>';
   }
@@ -657,6 +660,7 @@ header.top .back a{white-space:nowrap}
   var VIEW0 = {zoom:1, px:0, py:0, bright:0, contrast:1, bg:'blue'};
   var COMPANY = 'TechNext Pte. Ltd.';
   var TAGLINE = 'Odoo ERP Solution and AI Automation';
+  var SERVICES = 'IoT \u00b7 Apps \u00b7 Networks \u00b7 Cyber Security';
   var KEY = 'tn-idcards-v2', OLDKEY = 'tn-idcards-v1';
   var FIELDS = ['name','title','dept','office','idno','blood','issued','expires','ecName','ecPhone'];
   var FW = 128, FH = 150;   // photo frame on the card, CSS px
@@ -824,7 +828,7 @@ header.top .back a{white-space:nowrap}
         '<div class="idc-sig"><i></i><small>Authorised signature</small></div>'+
         '<div class="idc-note">This card is the property of <b>'+COMPANY+'</b> and must be shown on request. If found, please return it to 261 Waterloo Street #03-36, Singapore 180261 or email hello@technext.asia.</div>'+
       '</div>'+
-      '<div class="idc-bf"><b>technext.asia</b><small>'+esc(TAGLINE)+'</small></div>'+
+      '<div class="idc-bf"><b>technext.asia</b><small>'+esc(TAGLINE)+'</small><small class="idc-svc">'+esc(SERVICES)+'</small></div>'+
     '</div></div>';
   }
   function hydrate(root){
